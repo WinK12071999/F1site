@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Contact F1site — get in touch about web design, graphic design, or website maintenance for your organization.">
+  <title>Contact — F1site</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" href="../logos/f1-logo-transparent.png" type="image/png">
+</head>
+<body data-page="contact">
+
+  <div id="site-header"></div>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="page-hero-bg"></div>
+      <div class="container">
+        <p class="section-eyebrow">Get in Touch</p>
+        <h1 class="section-title">Let's build something remarkable</h1>
+        <p class="section-desc">
+          Tell us about your project, timeline, and goals. We respond to every inquiry within one business day with clear next steps — whether that's a discovery call, a proposal, or honest guidance on the best path forward.
+        </p>
+      </div>
+    </section>
+
+    <section class="page-content">
+      <div class="container">
+        <div class="contact-info-grid">
+          <div class="contact-info-card">
+            <h3>Email</h3>
+            <p><a href="mailto:hello@f1digital.com">hello@f1digital.com</a></p>
+            <p style="margin-top:0.5rem">For project inquiries, partnerships, and general questions.</p>
+          </div>
+          <div class="contact-info-card">
+            <h3>Phone</h3>
+            <p><a href="tel:+16135550100">(613) 555-0100</a></p>
+            <p style="margin-top:0.5rem">Monday – Friday, 9:00 AM – 5:00 PM EST.</p>
+          </div>
+          <div class="contact-info-card">
+            <h3>Location</h3>
+            <p>Ottawa, Ontario, Canada</p>
+            <p style="margin-top:0.5rem">Serving clients remotely across Canada and internationally.</p>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h2 class="section-title" style="font-size:1.375rem">What to include in your message</h2>
+            <p class="contact-desc">
+              The more context you provide, the faster we can assess fit and prepare a useful response. Helpful details include:
+            </p>
+            <ul class="about-features">
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+                A brief description of your organization
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+                The service you're interested in
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+                Your ideal timeline and budget range
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+                Links to your current site or brand assets
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+                Any specific challenges or requirements
+              </li>
+            </ul>
+          </div>
+
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required placeholder="Jane Smith" autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="organization">Organization</label>
+                <input type="text" id="organization" name="organization" placeholder="Your Company" autocomplete="organization">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="jane@company.com" autocomplete="email">
+              </div>
+              <div class="form-group">
+                <label for="service">Service Needed</label>
+                <select id="service" name="service">
+                  <option value="">Select a service</option>
+                  <option value="web-design">Web Design &amp; Development</option>
+                  <option value="graphic-design">Graphic Design</option>
+                  <option value="maintenance">Website Maintenance</option>
+                  <option value="multiple">Multiple Services</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="budget">Estimated Budget</label>
+              <select id="budget" name="budget">
+                <option value="">Select a range</option>
+                <option value="under-10k">Under $10,000</option>
+                <option value="10k-25k">$10,000 – $25,000</option>
+                <option value="25k-50k">$25,000 – $50,000</option>
+                <option value="50k-plus">$50,000+</option>
+                <option value="ongoing">Ongoing maintenance</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Project Details</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Tell us about your project, timeline, and goals..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+            <p class="form-success" id="formSuccess" hidden>Thank you! We'll be in touch within one business day.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-content alt-bg">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">FAQ</p>
+          <h2 class="section-title">Before you reach out</h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <h3>How quickly will I hear back?</h3>
+            <p>We respond to all inquiries within one business day. Complex projects may receive an initial acknowledgment followed by a detailed response within 48 hours.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Is the initial consultation free?</h3>
+            <p>Yes. Our first discovery call is always complimentary. We'll discuss your needs, share relevant experience, and outline how we'd approach your project.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Do you sign NDAs?</h3>
+            <p>Absolutely. We're accustomed to working with organizations that require confidentiality agreements before sharing project details.</p>
+          </div>
+          <div class="faq-item">
+            <h3>What's the minimum project size?</h3>
+            <p>Most new website projects start around $15,000. Graphic design engagements vary by scope. Maintenance plans start at $499/month. We're happy to discuss options if budget is a concern.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Do you work with clients outside Canada?</h3>
+            <p>Yes. While we're based in Ottawa, we work remotely with clients across North America and internationally. All communication is handled via video calls and our project portal.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="../js/layout.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
