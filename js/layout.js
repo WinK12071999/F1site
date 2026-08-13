@@ -2,11 +2,11 @@
   'use strict';
 
   var NAV = [
-    { id: 'services', href: '/services', label: 'Services' },
-    { id: 'about', href: '/about', label: 'About' },
-    { id: 'process', href: '/process', label: 'Process' },
-    { id: 'work', href: '/work', label: 'Work' },
-    { id: 'contact', href: '/contact', label: 'Get in Touch', cta: true }
+    { id: 'services', href: 'services.html', label: 'Services' },
+    { id: 'about', href: 'about.html', label: 'About' },
+    { id: 'process', href: 'process.html', label: 'Process' },
+    { id: 'work', href: 'work.html', label: 'Work' },
+    { id: 'contact', href: 'contact.html', label: 'Get in Touch', cta: true }
   ];
 
   var currentPage = document.body.getAttribute('data-page') || '';
@@ -24,7 +24,7 @@
     }).join('');
   }
 
-  var logoPath = '/logos/f1-logo-transparent.png';
+  var logoPath = 'logos/f1-logo-transparent.png';
 
   var logoFeaturedHtml =
     '<div class="logo-anchor" id="site-logo">' +
@@ -35,7 +35,7 @@
             '<img src="' + logoPath + '" alt="F1site" class="logo-img logo-img-featured" width="1536" height="1024">' +
           '</span>' +
         '</span>' +
-        '<a href="/" class="logo logo-hit-link" aria-label="F1site home"></a>' +
+        '<a href="index.html" class="logo logo-hit-link" aria-label="F1site home"></a>' +
       '</div>' +
     '</div>';
 
@@ -54,7 +54,7 @@
     '</nav>';
 
   var footerLogoHtml =
-    '<a href="/" class="logo" aria-label="F1site home">' +
+    '<a href="index.html" class="logo" aria-label="F1site home">' +
       '<img src="' + logoPath + '" alt="F1site" class="logo-img logo-img-footer" width="1536" height="1024">' +
     '</a>';
 
@@ -68,18 +68,18 @@
         '<div class="footer-links">' +
           '<h4>Services</h4>' +
           '<ul>' +
-            '<li><a href="/services#web-design">Web Design</a></li>' +
-            '<li><a href="/services#graphic-design">Graphic Design</a></li>' +
-            '<li><a href="/services#maintenance">Maintenance</a></li>' +
+            '<li><a href="services.html#web-design">Web Design</a></li>' +
+            '<li><a href="services.html#graphic-design">Graphic Design</a></li>' +
+            '<li><a href="services.html#maintenance">Maintenance</a></li>' +
           '</ul>' +
         '</div>' +
         '<div class="footer-links">' +
           '<h4>Company</h4>' +
           '<ul>' +
-            '<li><a href="/about">About</a></li>' +
-            '<li><a href="/process">Process</a></li>' +
-            '<li><a href="/work">Work</a></li>' +
-            '<li><a href="/contact">Contact</a></li>' +
+            '<li><a href="about.html">About</a></li>' +
+            '<li><a href="process.html">Process</a></li>' +
+            '<li><a href="work.html">Work</a></li>' +
+            '<li><a href="contact.html">Contact</a></li>' +
           '</ul>' +
         '</div>' +
         '<div class="footer-links">' +

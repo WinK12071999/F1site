@@ -43,9 +43,9 @@
 
   var PATH_D = PATHS[page] || PATHS.home;
 
-  var CAR_SRC = '/assets/circuit/mclaren-f1-web.png';
-  var VIDEO_SRC = '/assets/circuit/ocean-waves-fast.mp4';
-  var POSTER_SRC = '/assets/circuit/ocean-poster.jpg';
+  var CAR_SRC = 'assets/circuit/mclaren-f1-web.png';
+  var VIDEO_SRC = 'assets/circuit/ocean-waves-fast.mp4';
+  var POSTER_SRC = 'assets/circuit/ocean-poster.jpg';
 
   var CAR_HEADING_OFFSET = 0;
   var SMOOTH = mobile ? 0.14 : 0.1;
