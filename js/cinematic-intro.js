@@ -197,6 +197,14 @@
     children.forEach(function (el) {
       if (el.tagName === 'SCRIPT') return;
       if (el.id === 'cinematic-intro') return;
+      if (el.classList && (
+        el.classList.contains('circuit-ocean') ||
+        el.classList.contains('circuit-stage') ||
+        el.classList.contains('circuit-loader') ||
+        el.classList.contains('circuit-progress') ||
+        el.classList.contains('nav-panel') ||
+        el.classList.contains('nav-backdrop')
+      )) return;
       world.appendChild(el);
     });
     body.insertBefore(world, body.firstChild);

@@ -4,11 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="F1site portfolio — selected web design, graphic design, and maintenance projects for enterprise clients.">
-  <title>Work — F1site</title>
+  <title>F1site · Work</title>
+  <link rel="canonical" href="https://f1site.com/work">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="F1site">
+  <meta property="og:title" content="F1site · Work">
+  <meta property="og:description" content="F1site portfolio — selected web design, graphic design, and maintenance projects for enterprise clients.">
+  <meta property="og:url" content="https://f1site.com/work">
+  <meta property="og:image" content="https://f1site.com/logos/favicon-192.png">
+  <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/circuit-journey.css">
+  <link rel="preload" as="image" href="/assets/circuit/ocean-poster.jpg">
+  <link rel="preload" as="video" href="/assets/circuit/ocean-waves-fast.mp4">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="/logos/favicon-48.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/logos/favicon-192.png">
@@ -31,168 +42,108 @@
       </div>
     </section>
 
-    <section class="page-content">
-      <div class="container">
+    <section class="page-content work-portfolio" aria-label="Selected projects">
+      <div class="container work-portfolio-list">
 
-        <article class="case-study">
-          <div class="case-study-visual work-image-1">
-            <div class="project-preview">
-              <img
-                class="project-logo"
-                src="/logos/project-logos/gcsio.png"
-                alt="GCSIO logo"
-                loading="lazy"
-              >
-            </div>
-            <a class="site-preview-fallback" href="https://gcsio.org" target="_blank" rel="noreferrer">Visit gcsio.org →</a>
-          </div>
-          <div class="case-study-content">
-            <span class="work-tag">Organization Site</span>
-            <h2>GCSIO</h2>
-            <p>Website design and improvements for an organizational website — focused on clear information structure, modern visuals, and an experience that works across devices.</p>
-            <div class="case-services">
-              <span class="deliverable-tag">UI Design</span>
-              <span class="deliverable-tag">Responsive Layout</span>
-              <span class="deliverable-tag">Content Structure</span>
-            </div>
-            <div class="hero-actions" style="margin-top: 1.5rem; margin-bottom: 0;">
-              <a class="btn btn-ghost" href="https://gcsio.org" target="_blank" rel="noreferrer">Visit gcsio.org</a>
-            </div>
+        <article class="work-feature">
+          <a class="work-feature-media work-image-1" href="https://gcsio.org" target="_blank" rel="noreferrer">
+            <span class="work-feature-media-inner">
+              <img class="project-logo" src="/logos/project-logos/gcsio.png" alt="" loading="lazy">
+            </span>
+            <span class="work-feature-media-label">Open site</span>
+          </a>
+          <div class="work-feature-copy">
+            <p class="work-feature-index" aria-hidden="true">01</p>
+            <p class="work-feature-meta">Organization Site</p>
+            <h2 class="work-feature-title">GCSIO</h2>
+            <p class="work-feature-desc">Website design and improvements for an organizational website — focused on clear information structure, modern visuals, and an experience that works across devices.</p>
+            <p class="work-feature-scope">UI Design · Responsive Layout · Content Structure</p>
+            <a class="work-feature-link" href="https://gcsio.org" target="_blank" rel="noreferrer">Visit gcsio.org <span aria-hidden="true">→</span></a>
           </div>
         </article>
 
-        <article class="case-study">
-          <div class="case-study-visual work-image-2 preview-panel-light">
-            <div class="project-preview">
-              <img
-                class="project-logo"
-                src="/logos/project-logos/abefer-logo.png"
-                alt="ABEFER logo"
-                loading="lazy"
-              >
-            </div>
-            <a class="site-preview-fallback" href="https://abefer.org" target="_blank" rel="noreferrer">Visit abefer.org →</a>
-          </div>
-          <div class="case-study-content">
-            <span class="work-tag">Nonprofit</span>
-            <h2>ABEFER</h2>
-            <p>Website work for a nonprofit organization — improving readability, navigation, and the overall presentation of programs, updates, and community information.</p>
-            <div class="case-services">
-              <span class="deliverable-tag">Information Architecture</span>
-              <span class="deliverable-tag">Visual Refresh</span>
-              <span class="deliverable-tag">Mobile Optimization</span>
-            </div>
-            <div class="hero-actions" style="margin-top: 1.5rem; margin-bottom: 0;">
-              <a class="btn btn-ghost" href="https://abefer.org" target="_blank" rel="noreferrer">Visit abefer.org</a>
-            </div>
+        <article class="work-feature work-feature--flip">
+          <a class="work-feature-media work-image-2 preview-panel-light" href="https://abefer.org" target="_blank" rel="noreferrer">
+            <span class="work-feature-media-inner">
+              <img class="project-logo" src="/logos/project-logos/abefer-logo.png" alt="" loading="lazy">
+            </span>
+            <span class="work-feature-media-label">Open site</span>
+          </a>
+          <div class="work-feature-copy">
+            <p class="work-feature-index" aria-hidden="true">02</p>
+            <p class="work-feature-meta">Nonprofit</p>
+            <h2 class="work-feature-title">ABEFER</h2>
+            <p class="work-feature-desc">Website work for a nonprofit organization — improving readability, navigation, and the overall presentation of programs, updates, and community information.</p>
+            <p class="work-feature-scope">Information Architecture · Visual Refresh · Mobile Optimization</p>
+            <a class="work-feature-link" href="https://abefer.org" target="_blank" rel="noreferrer">Visit abefer.org <span aria-hidden="true">→</span></a>
           </div>
         </article>
 
-        <article class="case-study">
-          <div class="case-study-visual work-image-3">
-            <div class="project-preview">
-              <img
-                class="project-logo"
-                src="/logos/project-logos/scanspe-logo.png"
-                alt="ScanSpe logo"
-                loading="lazy"
-              >
-            </div>
-            <a class="site-preview-fallback" href="https://scanspe.com" target="_blank" rel="noreferrer">Visit scanspe.com →</a>
-          </div>
-          <div class="case-study-content">
-            <span class="work-tag">Web App</span>
-            <h2>ScanSpe</h2>
-            <p>Landing experience and product-facing web work for a digital receipts platform — focused on clean UI, fast performance, and clear feature communication.</p>
-            <div class="case-services">
-              <span class="deliverable-tag">Product UI</span>
-              <span class="deliverable-tag">Front-end</span>
-              <span class="deliverable-tag">Performance</span>
-            </div>
-            <div class="hero-actions" style="margin-top: 1.5rem; margin-bottom: 0;">
-              <a class="btn btn-ghost" href="https://scanspe.com" target="_blank" rel="noreferrer">Visit scanspe.com</a>
-            </div>
+        <article class="work-feature">
+          <a class="work-feature-media work-image-3" href="https://scanspe.com" target="_blank" rel="noreferrer">
+            <span class="work-feature-media-inner">
+              <img class="project-logo" src="/logos/project-logos/scanspe-logo.png" alt="" loading="lazy">
+            </span>
+            <span class="work-feature-media-label">Open site</span>
+          </a>
+          <div class="work-feature-copy">
+            <p class="work-feature-index" aria-hidden="true">03</p>
+            <p class="work-feature-meta">Web App</p>
+            <h2 class="work-feature-title">ScanSpe</h2>
+            <p class="work-feature-desc">Landing experience and product-facing web work for a digital receipts platform — focused on clean UI, fast performance, and clear feature communication.</p>
+            <p class="work-feature-scope">Product UI · Front-end · Performance</p>
+            <a class="work-feature-link" href="https://scanspe.com" target="_blank" rel="noreferrer">Visit scanspe.com <span aria-hidden="true">→</span></a>
           </div>
         </article>
 
-        <article class="case-study">
-          <div class="case-study-visual work-image-1">
-            <div class="project-preview">
-              <img
-                class="project-logo"
-                src="/logos/project-logos/one-ottawa-logo.png"
-                alt="OneOttawa logo"
-                loading="lazy"
-              >
-            </div>
-            <a class="site-preview-fallback" href="https://oneottawa.ca" target="_blank" rel="noreferrer">Visit oneottawa.ca →</a>
-          </div>
-          <div class="case-study-content">
-            <span class="work-tag">Local Organization</span>
-            <h2>OneOttawa</h2>
-            <p>Website work for a local/community organization — improving layout consistency, clarity of messaging, and overall usability for visitors and stakeholders.</p>
-            <div class="case-services">
-              <span class="deliverable-tag">Website Design</span>
-              <span class="deliverable-tag">Content Layout</span>
-              <span class="deliverable-tag">Accessibility Basics</span>
-            </div>
-            <div class="hero-actions" style="margin-top: 1.5rem; margin-bottom: 0;">
-              <a class="btn btn-ghost" href="https://oneottawa.ca" target="_blank" rel="noreferrer">Visit oneottawa.ca</a>
-            </div>
+        <article class="work-feature work-feature--flip">
+          <a class="work-feature-media work-image-1" href="https://oneottawa.ca" target="_blank" rel="noreferrer">
+            <span class="work-feature-media-inner">
+              <img class="project-logo" src="/logos/project-logos/one-ottawa-logo.png" alt="" loading="lazy">
+            </span>
+            <span class="work-feature-media-label">Open site</span>
+          </a>
+          <div class="work-feature-copy">
+            <p class="work-feature-index" aria-hidden="true">04</p>
+            <p class="work-feature-meta">Local Organization</p>
+            <h2 class="work-feature-title">OneOttawa</h2>
+            <p class="work-feature-desc">Website work for a local/community organization — improving layout consistency, clarity of messaging, and overall usability for visitors and stakeholders.</p>
+            <p class="work-feature-scope">Website Design · Content Layout · Accessibility Basics</p>
+            <a class="work-feature-link" href="https://oneottawa.ca" target="_blank" rel="noreferrer">Visit oneottawa.ca <span aria-hidden="true">→</span></a>
           </div>
         </article>
 
-        <article class="case-study">
-          <div class="case-study-visual work-image-2 preview-panel-light">
-            <div class="project-preview">
-              <img
-                class="project-logo"
-                src="/logos/project-logos/swisderm-logo.png"
-                alt="Swisderm logo"
-                loading="lazy"
-              >
-            </div>
-            <a class="site-preview-fallback" href="https://swisderm.ca" target="_blank" rel="noreferrer">Visit swisderm.ca →</a>
-          </div>
-          <div class="case-study-content">
-            <span class="work-tag">Healthcare</span>
-            <h2>Swisderm</h2>
-            <p>Website design and development for a dermatology practice — focused on a professional presentation of services, clear patient information, and a polished brand experience across devices.</p>
-            <div class="case-services">
-              <span class="deliverable-tag">Website Design</span>
-              <span class="deliverable-tag">Brand Presentation</span>
-              <span class="deliverable-tag">Responsive Layout</span>
-            </div>
-            <div class="hero-actions" style="margin-top: 1.5rem; margin-bottom: 0;">
-              <a class="btn btn-ghost" href="https://swisderm.ca" target="_blank" rel="noreferrer">Visit swisderm.ca</a>
-            </div>
+        <article class="work-feature">
+          <a class="work-feature-media work-image-2 preview-panel-light" href="https://swisderm.ca" target="_blank" rel="noreferrer">
+            <span class="work-feature-media-inner">
+              <img class="project-logo" src="/logos/project-logos/swisderm-logo.png" alt="" loading="lazy">
+            </span>
+            <span class="work-feature-media-label">Open site</span>
+          </a>
+          <div class="work-feature-copy">
+            <p class="work-feature-index" aria-hidden="true">05</p>
+            <p class="work-feature-meta">Healthcare</p>
+            <h2 class="work-feature-title">Swisderm</h2>
+            <p class="work-feature-desc">Website design and development for a dermatology practice — focused on a professional presentation of services, clear patient information, and a polished brand experience across devices.</p>
+            <p class="work-feature-scope">Website Design · Brand Presentation · Responsive Layout</p>
+            <a class="work-feature-link" href="https://swisderm.ca" target="_blank" rel="noreferrer">Visit swisderm.ca <span aria-hidden="true">→</span></a>
           </div>
         </article>
 
-        <article class="case-study">
-          <div class="case-study-visual work-image-3 preview-panel-cover">
-            <div class="project-preview">
-              <img
-                class="project-logo"
-                src="/logos/project-logos/flotilla-for-friendship-logo.png"
-                alt="Flotilla for Friendship logo"
-                loading="lazy"
-              >
-            </div>
-            <a class="site-preview-fallback" href="https://www.flotillaforfriendship.ca" target="_blank" rel="noreferrer">Visit flotillaforfriendship.ca →</a>
-          </div>
-          <div class="case-study-content">
-            <span class="work-tag">Community Event</span>
-            <h2>Flotilla for Friendship</h2>
-            <p>Website design and development for Ottawa’s Flotilla for Friendship — a community event site focused on registration, event details, and storytelling around Indigenous youth and first responders paddling together.</p>
-            <div class="case-services">
-              <span class="deliverable-tag">Website Design</span>
-              <span class="deliverable-tag">Event Landing</span>
-              <span class="deliverable-tag">Responsive Layout</span>
-            </div>
-            <div class="hero-actions" style="margin-top: 1.5rem; margin-bottom: 0;">
-              <a class="btn btn-ghost" href="https://www.flotillaforfriendship.ca" target="_blank" rel="noreferrer">Visit flotillaforfriendship.ca</a>
-            </div>
+        <article class="work-feature work-feature--flip">
+          <a class="work-feature-media work-image-3 preview-panel-cover" href="https://www.flotillaforfriendship.ca" target="_blank" rel="noreferrer">
+            <span class="work-feature-media-inner">
+              <img class="project-logo" src="/logos/project-logos/flotilla-for-friendship-logo.png" alt="" loading="lazy">
+            </span>
+            <span class="work-feature-media-label">Open site</span>
+          </a>
+          <div class="work-feature-copy">
+            <p class="work-feature-index" aria-hidden="true">06</p>
+            <p class="work-feature-meta">Community Event</p>
+            <h2 class="work-feature-title">Flotilla for Friendship</h2>
+            <p class="work-feature-desc">Website design and development for Ottawa’s Flotilla for Friendship — a community event site focused on registration, event details, and storytelling around Indigenous youth and first responders paddling together.</p>
+            <p class="work-feature-scope">Website Design · Event Landing · Responsive Layout</p>
+            <a class="work-feature-link" href="https://www.flotillaforfriendship.ca" target="_blank" rel="noreferrer">Visit flotillaforfriendship.ca <span aria-hidden="true">→</span></a>
           </div>
         </article>
 
@@ -214,6 +165,7 @@
   <div id="site-footer"></div>
 
   <script src="/js/layout.js"></script>
+  <script src="/js/circuit-journey.js"></script>
   <script src="/js/main.js"></script>
 </body>
 </html>

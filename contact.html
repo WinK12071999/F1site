@@ -4,11 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Contact F1site — get in touch about web design, graphic design, or website maintenance for your organization.">
-  <title>Contact — F1site</title>
+  <title>F1site · Contact</title>
+  <link rel="canonical" href="https://f1site.com/contact">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="F1site">
+  <meta property="og:title" content="F1site · Contact">
+  <meta property="og:description" content="Contact F1site — get in touch about web design, graphic design, or website maintenance for your organization.">
+  <meta property="og:url" content="https://f1site.com/contact">
+  <meta property="og:image" content="https://f1site.com/logos/favicon-192.png">
+  <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/circuit-journey.css">
+  <link rel="preload" as="image" href="/assets/circuit/ocean-poster.jpg">
+  <link rel="preload" as="video" href="/assets/circuit/ocean-waves-fast.mp4">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="/logos/favicon-48.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/logos/favicon-192.png">
@@ -135,33 +146,49 @@
       </div>
     </section>
 
-    <section class="page-content alt-bg">
-      <div class="container">
-        <div class="section-header">
+    <section class="page-content alt-bg faq-section">
+      <div class="container faq-layout">
+        <div class="section-header faq-intro">
           <p class="section-eyebrow">FAQ</p>
           <h2 class="section-title">Before you reach out</h2>
+          <p class="section-desc">Clear answers so you know what to expect before we talk.</p>
         </div>
         <div class="faq-list">
-          <div class="faq-item">
-            <h3>How quickly will I hear back?</h3>
-            <p>We respond to all inquiries within one business day. Complex projects may receive an initial acknowledgment followed by a detailed response within 48 hours.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Is the initial consultation free?</h3>
-            <p>Yes. Our first discovery call is always complimentary. We'll discuss your needs, share relevant experience, and outline how we'd approach your project.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Do you sign NDAs?</h3>
-            <p>Absolutely. We're accustomed to working with organizations that require confidentiality agreements before sharing project details.</p>
-          </div>
-          <div class="faq-item">
-            <h3>What's the minimum project size?</h3>
-            <p>Most new website projects start around $15,000. Graphic design engagements vary by scope. Maintenance plans start at $499/month. We're happy to discuss options if budget is a concern.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Do you work with clients outside Canada?</h3>
-            <p>Yes. While we're based in Ottawa, we work remotely with clients across North America and internationally. All communication is handled via video calls and our project portal.</p>
-          </div>
+          <details class="faq-item" open>
+            <summary>
+              <span class="faq-index" aria-hidden="true"></span>
+              <span class="faq-q">How quickly will I hear back?</span>
+            </summary>
+            <p class="faq-a">We respond to all inquiries within one business day. Complex projects may receive an initial acknowledgment followed by a detailed response within 48 hours.</p>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span class="faq-index" aria-hidden="true"></span>
+              <span class="faq-q">Is the initial consultation free?</span>
+            </summary>
+            <p class="faq-a">Yes. Our first discovery call is always complimentary. We'll discuss your needs, share relevant experience, and outline how we'd approach your project.</p>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span class="faq-index" aria-hidden="true"></span>
+              <span class="faq-q">Do you sign NDAs?</span>
+            </summary>
+            <p class="faq-a">Absolutely. We're accustomed to working with organizations that require confidentiality agreements before sharing project details.</p>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span class="faq-index" aria-hidden="true"></span>
+              <span class="faq-q">What's the minimum project size?</span>
+            </summary>
+            <p class="faq-a">Most new website projects start around $15,000. Graphic design engagements vary by scope. Maintenance plans start at $499/month. We're happy to discuss options if budget is a concern.</p>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span class="faq-index" aria-hidden="true"></span>
+              <span class="faq-q">Do you work with clients outside Canada?</span>
+            </summary>
+            <p class="faq-a">Yes. While we're based in Ottawa, we work remotely with clients across North America and internationally. All communication is handled via video calls and our project portal.</p>
+          </details>
         </div>
       </div>
     </section>
@@ -171,6 +198,7 @@
   <div id="site-footer"></div>
 
   <script src="/js/layout.js"></script>
+  <script src="/js/circuit-journey.js"></script>
   <script src="/js/main.js"></script>
 </body>
 </html>

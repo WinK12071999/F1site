@@ -41,14 +41,17 @@
 
   var headerHtml =
     '<header class="header" id="header">' +
-      '<nav class="nav container">' +
-        '<button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">' +
+      '<nav class="nav container" aria-label="Primary">' +
+        '<button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">' +
           '<span></span><span></span>' +
         '</button>' +
-        '<ul class="nav-links" id="navLinks">' + navLinksHtml() + '</ul>' +
+        '<ul class="nav-links nav-links-desktop" id="navLinksDesktop">' + navLinksHtml() + '</ul>' +
       '</nav>' +
     '</header>' +
-    '<div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>';
+    '<div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>' +
+    '<nav class="nav-panel" id="navPanel" aria-label="Mobile" aria-hidden="true">' +
+      '<ul class="nav-links" id="navLinks">' + navLinksHtml() + '</ul>' +
+    '</nav>';
 
   var footerLogoHtml =
     '<a href="/" class="logo" aria-label="F1site home">' +
@@ -83,8 +86,6 @@
           '<h4>Connect</h4>' +
           '<ul>' +
             '<li><a href="mailto:projects@f1site.com">Email</a></li>' +
-            '<li><a href="#" aria-label="LinkedIn">LinkedIn</a></li>' +
-            '<li><a href="#" aria-label="Instagram">Instagram</a></li>' +
           '</ul>' +
         '</div>' +
       '</div>' +
@@ -98,6 +99,12 @@
 
   if (headerEl) {
     headerEl.innerHTML = headerHtml;
+    // Keep the mobile panel/backdrop on <body> so position:fixed is never
+    // clipped by header filters or wrapper stacking contexts.
+    var backdrop = document.getElementById('navBackdrop');
+    var panel = document.getElementById('navPanel');
+    if (backdrop) document.body.appendChild(backdrop);
+    if (panel) document.body.appendChild(panel);
     headerEl.insertAdjacentHTML('afterend', logoFeaturedHtml);
   }
   if (footerEl) footerEl.innerHTML = footerHtml;

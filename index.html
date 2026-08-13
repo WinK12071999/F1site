@@ -4,12 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="F1site — Enterprise web design, graphic design, and website maintenance for organizations that demand excellence.">
-  <title>F1site — Web Design &amp; Graphic Design Studio</title>
+  <title>F1site</title>
+  <link rel="canonical" href="https://f1site.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="F1site">
+  <meta property="og:title" content="F1site">
+  <meta property="og:description" content="F1site — Enterprise web design, graphic design, and website maintenance for organizations that demand excellence.">
+  <meta property="og:url" content="https://f1site.com/">
+  <meta property="og:image" content="https://f1site.com/logos/favicon-192.png">
+  <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="/css/cinematic-intro.css">
+  <link rel="stylesheet" href="/css/circuit-journey.css">
+  <link rel="preload" as="image" href="/assets/circuit/ocean-poster.jpg">
+  <link rel="preload" as="video" href="/assets/circuit/ocean-waves-fast.mp4">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="/logos/favicon-48.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/logos/favicon-192.png">
@@ -72,58 +83,6 @@
           </div>
         </div>
 
-        <aside class="hero-stage" aria-hidden="true">
-          <div class="stage-orbit"></div>
-          <div class="stage-grid"></div>
-
-          <div class="stage-card stage-brief">
-            <div class="stage-brief-row">
-              <span class="stage-dot"></span>
-              <span class="stage-mono">brief.md</span>
-            </div>
-            <p class="stage-cmd"><span class="stage-prompt">$</span> design · build · launch</p>
-            <div class="stage-progress"><span></span></div>
-          </div>
-
-          <svg class="stage-flow" viewBox="0 0 220 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path class="stage-flow-path" id="stageFlowPath" d="M18 18 C 70 18, 90 80, 140 110 S 200 148, 210 148" />
-            <circle class="stage-flow-bead" r="4" cx="18" cy="18">
-              <animateMotion dur="2.8s" repeatCount="indefinite" rotate="auto">
-                <mpath href="#stageFlowPath" xlink:href="#stageFlowPath"></mpath>
-              </animateMotion>
-            </circle>
-          </svg>
-
-          <div class="stage-board">
-            <div class="stage-board-head">
-              <span class="stage-live"><span class="stage-live-ping"></span> LIVE</span>
-              <span class="stage-board-label">PRODUCTION</span>
-            </div>
-            <div class="stage-panels">
-              <div class="stage-panel">
-                <div class="stage-panel-top">
-                  <span>Web Design</span>
-                  <span class="stage-meta">Fast</span>
-                </div>
-                <canvas class="sparkline" data-spark="rise" width="160" height="36"></canvas>
-              </div>
-              <div class="stage-panel">
-                <div class="stage-panel-top">
-                  <span>Brand System</span>
-                  <span class="stage-meta">Stable</span>
-                </div>
-                <canvas class="sparkline" data-spark="wave" width="160" height="36"></canvas>
-              </div>
-              <div class="stage-panel">
-                <div class="stage-panel-top">
-                  <span>Maintenance</span>
-                  <span class="stage-meta">99.9%</span>
-                </div>
-                <canvas class="sparkline" data-spark="flat" width="160" height="36"></canvas>
-              </div>
-            </div>
-          </div>
-        </aside>
       </div>
     </section>
 
@@ -177,6 +136,7 @@
 
   <script src="/js/layout.js"></script>
   <script src="/js/cinematic-intro.js"></script>
+  <script src="/js/circuit-journey.js"></script>
   <script src="/js/main.js"></script>
 </body>
 </html>

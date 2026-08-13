@@ -19,12 +19,17 @@
       if (!navLinks || !navToggle) return;
       navLinks.classList.toggle('open', isOpen);
       navToggle.classList.toggle('active', isOpen);
-      navToggle.setAttribute('aria-expanded', isOpen);
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       document.body.classList.toggle('nav-open', isOpen);
       document.body.style.overflow = isOpen ? 'hidden' : '';
       if (navBackdrop) {
         navBackdrop.classList.toggle('visible', isOpen);
         navBackdrop.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      }
+      var panel = document.getElementById('navPanel');
+      if (panel) {
+        panel.classList.toggle('open', isOpen);
+        panel.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
       }
     }
 
@@ -38,7 +43,7 @@
 
     if (navToggle && navLinks) {
       navToggle.addEventListener('click', function () {
-        setNavOpen(!navLinks.classList.contains('open'));
+        setNavOpen(!document.body.classList.contains('nav-open'));
       });
 
       if (navBackdrop) {
@@ -120,6 +125,7 @@
     initLogoParallax();
     initLogoClickArea();
     initMobileHeroLogoFollow();
+    initFaqAccordion();
   }
 
   /* --------------------------------------------
@@ -250,6 +256,7 @@
     var el = document.getElementById('heroCycle');
     if (!el) return;
 
+    var wrap = el.parentElement;
     var words = [
       'enterprises',
       'institutions',
@@ -260,6 +267,25 @@
     ];
     var i = 0;
     var busy = false;
+
+    // Reserve width for the longest phrase so swaps never reflow the hero.
+    if (wrap) {
+      var probe = el.cloneNode(false);
+      probe.style.position = 'absolute';
+      probe.style.visibility = 'hidden';
+      probe.style.pointerEvents = 'none';
+      probe.style.whiteSpace = 'nowrap';
+      wrap.appendChild(probe);
+      var maxW = 0;
+      var w;
+      for (w = 0; w < words.length; w++) {
+        probe.textContent = words[w];
+        maxW = Math.max(maxW, probe.offsetWidth);
+      }
+      wrap.removeChild(probe);
+      var cap = wrap.parentElement ? wrap.parentElement.clientWidth : maxW;
+      if (maxW) wrap.style.minWidth = Math.min(maxW, cap || maxW) + 'px';
+    }
 
     function swap() {
       if (busy || document.hidden) return;
@@ -401,6 +427,25 @@
     });
 
     requestAnimationFrame(draw);
+  }
+
+  /* --------------------------------------------
+     FAQ accordion (one open at a time)
+     -------------------------------------------- */
+
+  function initFaqAccordion() {
+    var lists = document.querySelectorAll('.faq-list');
+    if (!lists.length) return;
+
+    lists.forEach(function (list) {
+      list.addEventListener('toggle', function (e) {
+        var target = e.target;
+        if (!target || target.tagName !== 'DETAILS' || !target.open) return;
+        list.querySelectorAll('details.faq-item[open]').forEach(function (item) {
+          if (item !== target) item.open = false;
+        });
+      }, true);
+    });
   }
 
   /* --------------------------------------------
@@ -550,7 +595,7 @@
   function initGlowCards() {
     var GLOW_SELECTOR =
       '.page-teaser, .detail-card, .value-card, .team-card, .plan-card, ' +
-      '.contact-info-card, .timeline-step, .about-card, .hero-stats, ' +
+      '.contact-info-card, .timeline-step, .hero-stats, ' +
       '.contact-form, .work-card, .service-card, .case-study-visual';
 
     var cards = document.querySelectorAll(GLOW_SELECTOR);
@@ -607,7 +652,7 @@
     document.querySelectorAll(
       '.page-teasers, .detail-grid, .value-grid, .team-grid, .plan-grid, ' +
       '.contact-info-grid, .work-grid, .services-grid, .process-timeline, ' +
-      '.case-study, .hero-stage, .about-visual, .hero-shell'
+      '.case-study, .hero-stage, .hero-shell'
     ).forEach(function (scene) {
       scene.classList.add('depth-scene');
     });
@@ -671,8 +716,10 @@
 
   function initScrollDepth() {
     if (window.innerWidth < 900) return;
+    // Circuit pages keep the ocean/track fixed — 3D section tilt causes shimmer.
+    if (document.body.classList.contains('has-circuit')) return;
 
-    var sections = document.querySelectorAll('main > section:not(.hero):not(.page-hero), .footer');
+    var sections = document.querySelectorAll('main > section:not(.hero):not(.page-hero):not(.circuit-moment), .footer');
     if (!sections.length) return;
 
     sections.forEach(function (el) {
@@ -856,12 +903,13 @@
         if (!href || done[href] || href.charAt(0) === '#') return;
         if (/^(mailto:|tel:|javascript:)/i.test(href)) return;
         if (/^(https?:)?\/\//i.test(href)) return;
-        // Internal clean URLs or legacy .html
+        // Internal clean URLs (/about) or legacy .html
         if (!(href.charAt(0) === '/' || /\.html(?:#|$)/.test(href))) return;
         done[href] = true;
         var link = document.createElement('link');
         link.rel = 'prefetch';
-        link.href = href;
+        // Prefetch the path without hash
+        link.href = href.split('#')[0] || '/';
         document.head.appendChild(link);
       },
       { passive: true }

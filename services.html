@@ -4,11 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="F1site services — web design, graphic design, and website maintenance for enterprise organizations.">
-  <title>Services — F1site</title>
+  <title>F1site · Services</title>
+  <link rel="canonical" href="https://f1site.com/services">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="F1site">
+  <meta property="og:title" content="F1site · Services">
+  <meta property="og:description" content="F1site services — web design, graphic design, and website maintenance for enterprise organizations.">
+  <meta property="og:url" content="https://f1site.com/services">
+  <meta property="og:image" content="https://f1site.com/logos/favicon-192.png">
+  <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/circuit-journey.css">
+  <link rel="preload" as="image" href="/assets/circuit/ocean-poster.jpg">
+  <link rel="preload" as="video" href="/assets/circuit/ocean-waves-fast.mp4">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="/logos/favicon-48.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/logos/favicon-192.png">
@@ -199,29 +210,42 @@
       </div>
     </section>
 
-    <section class="page-content">
-      <div class="container">
-        <div class="section-header">
+    <section class="page-content faq-section">
+      <div class="container faq-layout">
+        <div class="section-header faq-intro">
           <p class="section-eyebrow">FAQ</p>
           <h2 class="section-title">Common questions</h2>
+          <p class="section-desc">Practical answers about platforms, timelines, and handoffs.</p>
         </div>
         <div class="faq-list">
-          <div class="faq-item">
-            <h3>What platforms do you work with?</h3>
-            <p>We build on WordPress, Webflow, Shopify, and custom HTML/CSS/JS stacks. For maintenance, we support most major CMS platforms and can audit unfamiliar systems before onboarding.</p>
-          </div>
-          <div class="faq-item">
-            <h3>How long does a typical website project take?</h3>
-            <p>A standard corporate website takes 8–14 weeks from kickoff to launch. Complex portals or e-commerce builds may take longer. We provide a detailed timeline during the discovery phase.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Do you work with existing brand guidelines?</h3>
-            <p>Absolutely. We regularly implement established brand systems. If you don't have guidelines, our graphic design team can create them as part of your project.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Can you take over maintenance of a site someone else built?</h3>
-            <p>Yes. We start with a technical audit to understand the site's architecture, then create a transition plan. Most handoffs are seamless within the first two weeks.</p>
-          </div>
+          <details class="faq-item" open>
+            <summary>
+              <span class="faq-index" aria-hidden="true"></span>
+              <span class="faq-q">What platforms do you work with?</span>
+            </summary>
+            <p class="faq-a">We build on WordPress, Webflow, Shopify, and custom HTML/CSS/JS stacks. For maintenance, we support most major CMS platforms and can audit unfamiliar systems before onboarding.</p>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span class="faq-index" aria-hidden="true"></span>
+              <span class="faq-q">How long does a typical website project take?</span>
+            </summary>
+            <p class="faq-a">A standard corporate website takes 8–14 weeks from kickoff to launch. Complex portals or e-commerce builds may take longer. We provide a detailed timeline during the discovery phase.</p>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span class="faq-index" aria-hidden="true"></span>
+              <span class="faq-q">Do you work with existing brand guidelines?</span>
+            </summary>
+            <p class="faq-a">Absolutely. We regularly implement established brand systems. If you don't have guidelines, our graphic design team can create them as part of your project.</p>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span class="faq-index" aria-hidden="true"></span>
+              <span class="faq-q">Can you take over maintenance of a site someone else built?</span>
+            </summary>
+            <p class="faq-a">Yes. We start with a technical audit to understand the site's architecture, then create a transition plan. Most handoffs are seamless within the first two weeks.</p>
+          </details>
         </div>
       </div>
     </section>
@@ -231,6 +255,7 @@
   <div id="site-footer"></div>
 
   <script src="/js/layout.js"></script>
+  <script src="/js/circuit-journey.js"></script>
   <script src="/js/main.js"></script>
 </body>
 </html>
