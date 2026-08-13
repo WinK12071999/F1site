@@ -1,6 +1,12 @@
 (function () {
   'use strict';
 
+  var docEl = document.documentElement;
+  docEl.classList.add('js');
+
+  var motionOK = !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var finePointer = !!(window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches);
+
   function init() {
     var header = document.getElementById('header');
     var navToggle = document.getElementById('navToggle');
@@ -23,9 +29,9 @@
     }
 
     if (header) {
-      function onScroll() {
+      var onScroll = function () {
         header.classList.toggle('scrolled', window.scrollY > 20);
-      }
+      };
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
     }
@@ -48,35 +54,10 @@
       });
     }
 
-    var revealElements = document.querySelectorAll(
-      '.service-card, .about-card, .process-step, .work-card, .testimonial-quote, ' +
-      '.contact-form, .about-content, .detail-card, .faq-item, .team-card, ' +
-      '.case-study, .plan-card, .value-card, .page-teaser'
-    );
-
-    revealElements.forEach(function (el) {
-      el.classList.add('reveal');
-    });
-
-    if (revealElements.length) {
-      var observer = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-      );
-
-      revealElements.forEach(function (el) {
-        observer.observe(el);
-      });
-    }
-
     if (contactForm && formSuccess) {
+      var formError = document.getElementById('formError');
+      var submitBtn = document.getElementById('formSubmitBtn');
+
       contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -86,19 +67,810 @@
 
         if (!name || !email || !message) return;
 
-        contactForm.reset();
-        formSuccess.hidden = false;
+        formSuccess.hidden = true;
+        if (formError) formError.hidden = true;
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Sending…';
+        }
 
-        setTimeout(function () {
-          formSuccess.hidden = true;
-        }, 5000);
+        var data = new FormData(contactForm);
+
+        fetch('https://formsubmit.co/ajax/projects@f1site.com', {
+          method: 'POST',
+          body: data,
+          headers: { Accept: 'application/json' }
+        })
+          .then(function (response) {
+            if (!response.ok) throw new Error('Send failed');
+            contactForm.reset();
+            formSuccess.hidden = false;
+            setTimeout(function () {
+              formSuccess.hidden = true;
+            }, 6000);
+          })
+          .catch(function () {
+            if (formError) formError.hidden = false;
+          })
+          .finally(function () {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Send Message';
+            }
+          });
       });
     }
 
+    if (motionOK) {
+      initHeroIntro();
+      initHeroCycle();
+      initHeroSparklines();
+      initScrollReveal();
+      initCountUp();
+      initHeroParallax();
+      initPageTransitions();
+    }
+    if (motionOK && finePointer) {
+      initGlowCards();
+      initDepthTilt();
+      initScrollDepth();
+    }
+
+    initPrefetch();
     initLogoParallax();
     initLogoClickArea();
     initMobileHeroLogoFollow();
   }
+
+  /* --------------------------------------------
+     Motion helpers
+     -------------------------------------------- */
+
+  function primeAnim(el, variant, delayMs) {
+    el.classList.add('anim');
+    if (variant && variant !== 'up') el.setAttribute('data-anim', variant);
+    if (delayMs) el.style.setProperty('--d', (delayMs / 1000).toFixed(3) + 's');
+    el.__animDelay = delayMs || 0;
+  }
+
+  // After the entrance settles, strip animation classes so each element
+  // returns to its stylesheet-defined transitions (hover states stay snappy).
+  function settle(el) {
+    setTimeout(function () {
+      el.classList.remove('anim', 'anim-in');
+      el.removeAttribute('data-anim');
+      el.style.removeProperty('--d');
+    }, (el.__animDelay || 0) + 1050);
+  }
+
+  function revealNow(el) {
+    el.classList.add('anim-in');
+    settle(el);
+  }
+
+  /* --------------------------------------------
+     Hero / page-hero entrance choreography
+     -------------------------------------------- */
+
+  function initHeroIntro() {
+    var isHome = document.body.getAttribute('data-page') === 'home';
+    var scope = document.querySelector(isHome ? '.hero .hero-content' : '.page-hero .container');
+    if (!scope) return;
+
+    var eyebrow = scope.querySelector(isHome ? '.hero-eyebrow' : '.section-eyebrow');
+    var title = scope.querySelector(isHome ? '.hero-title' : '.section-title');
+    var desc = scope.querySelector(isHome ? '.hero-desc' : '.section-desc');
+    var actions = scope.querySelector('.hero-actions');
+    var stats = scope.querySelector('.hero-stats');
+
+    var primed = [];
+    var tokens = [];
+
+    if (eyebrow) {
+      primeAnim(eyebrow, 'up', 0);
+      primed.push(eyebrow);
+    }
+
+    if (title) {
+      tokens = splitTitle(title);
+      var base = isHome ? 120 : 100;
+      var step = isHome ? 55 : 45;
+      tokens.forEach(function (tok, i) {
+        tok.style.setProperty('--d', ((base + i * step) / 1000).toFixed(3) + 's');
+      });
+    }
+
+    var afterTitle = (isHome ? 120 : 100) + Math.max(tokens.length - 1, 0) * (isHome ? 55 : 45);
+
+    if (desc) {
+      primeAnim(desc, 'up', afterTitle + 240);
+      primed.push(desc);
+    }
+    if (actions) {
+      primeAnim(actions, 'up', afterTitle + 360);
+      primed.push(actions);
+    }
+    if (stats) {
+      primeAnim(stats, 'up', afterTitle + 480);
+      primed.push(stats);
+    }
+
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        tokens.forEach(function (tok) {
+          tok.classList.add('in');
+        });
+        primed.forEach(function (el) {
+          revealNow(el);
+        });
+      });
+    });
+  }
+
+  // Wraps each word of a heading in a span for the cascade. Element children
+  // (gradient <em> / cycling word wrap) are kept intact and revealed as one unit.
+  function splitTitle(title) {
+    var out = [];
+    var nodes = Array.prototype.slice.call(title.childNodes);
+    var frag = document.createDocumentFragment();
+
+    nodes.forEach(function (node) {
+      if (node.nodeType === 3) {
+        node.textContent.split(/(\s+)/).forEach(function (part) {
+          if (!part) return;
+          if (/^\s+$/.test(part)) {
+            frag.appendChild(document.createTextNode(' '));
+            return;
+          }
+          var s = document.createElement('span');
+          s.className = 'tw';
+          s.textContent = part;
+          frag.appendChild(s);
+          out.push(s);
+        });
+      } else if (node.nodeType === 1) {
+        node.classList.add('t-em');
+        frag.appendChild(node);
+        out.push(node);
+      } else {
+        frag.appendChild(node);
+      }
+    });
+
+    title.innerHTML = '';
+    title.appendChild(frag);
+    return out;
+  }
+
+  /* --------------------------------------------
+     Hero cycling word (Render-style)
+     -------------------------------------------- */
+
+  function initHeroCycle() {
+    var el = document.getElementById('heroCycle');
+    if (!el) return;
+
+    var words = [
+      'enterprises',
+      'institutions',
+      'nonprofits',
+      'healthcare',
+      'governments',
+      'organizations that lead'
+    ];
+    var i = 0;
+    var busy = false;
+
+    function swap() {
+      if (busy || document.hidden) return;
+      busy = true;
+      el.classList.remove('is-in');
+      el.classList.add('is-out');
+
+      setTimeout(function () {
+        i = (i + 1) % words.length;
+        el.textContent = words[i];
+        el.classList.remove('is-out');
+        // Force reflow so the in-animation restarts cleanly.
+        void el.offsetWidth;
+        el.classList.add('is-in');
+        setTimeout(function () {
+          busy = false;
+        }, 560);
+      }, 430);
+    }
+
+    setTimeout(function () {
+      setInterval(swap, 2800);
+    }, 2200);
+  }
+
+  /* --------------------------------------------
+     Live sparklines on the hero stage
+     -------------------------------------------- */
+
+  function initHeroSparklines() {
+    var canvases = document.querySelectorAll('.sparkline');
+    if (!canvases.length) return;
+
+    var frames = [];
+    var running = true;
+    var start = performance.now();
+
+    function seed(kind, n) {
+      var pts = [];
+      var i;
+      for (i = 0; i < n; i++) {
+        if (kind === 'rise') pts.push(0.25 + (i / n) * 0.45 + Math.sin(i * 0.7) * 0.08);
+        else if (kind === 'flat') pts.push(0.62 + Math.sin(i * 0.9) * 0.04);
+        else pts.push(0.45 + Math.sin(i * 0.55) * 0.22);
+      }
+      return pts;
+    }
+
+    canvases.forEach(function (canvas) {
+      var kind = canvas.getAttribute('data-spark') || 'wave';
+      frames.push({
+        canvas: canvas,
+        ctx: canvas.getContext('2d'),
+        kind: kind,
+        base: seed(kind, 28)
+      });
+    });
+
+    function draw(now) {
+      if (!running) return;
+      var t = (now - start) / 1000;
+
+      frames.forEach(function (frame) {
+        var canvas = frame.canvas;
+        var ctx = frame.ctx;
+        if (!ctx) return;
+
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        var w = canvas.clientWidth || 160;
+        var h = canvas.clientHeight || 28;
+        if (canvas.width !== Math.floor(w * dpr) || canvas.height !== Math.floor(h * dpr)) {
+          canvas.width = Math.floor(w * dpr);
+          canvas.height = Math.floor(h * dpr);
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+
+        ctx.clearRect(0, 0, w, h);
+
+        var pts = frame.base;
+        var n = pts.length;
+        var path = [];
+        var i;
+        for (i = 0; i < n; i++) {
+          var wave = Math.sin(t * 1.6 + i * 0.45) * 0.06;
+          if (frame.kind === 'rise') wave = Math.sin(t * 1.2 + i * 0.35) * 0.05;
+          if (frame.kind === 'flat') wave = Math.sin(t * 2.1 + i * 0.8) * 0.025;
+          var yNorm = Math.max(0.08, Math.min(0.92, pts[i] + wave));
+          path.push({
+            x: (i / (n - 1)) * w,
+            y: h - yNorm * h
+          });
+        }
+
+        // Soft fill under the line
+        ctx.beginPath();
+        ctx.moveTo(path[0].x, path[0].y);
+        for (i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
+        ctx.lineTo(w, h);
+        ctx.lineTo(0, h);
+        ctx.closePath();
+        var fill = ctx.createLinearGradient(0, 0, 0, h);
+        fill.addColorStop(0, 'rgba(255,255,255,0.14)');
+        fill.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.fillStyle = fill;
+        ctx.fill();
+
+        // Line
+        ctx.beginPath();
+        ctx.moveTo(path[0].x, path[0].y);
+        for (i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
+        ctx.strokeStyle = 'rgba(255,255,255,0.82)';
+        ctx.lineWidth = 1.5;
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+        ctx.stroke();
+
+        // Leading glow dot
+        var tip = path[path.length - 1];
+        ctx.beginPath();
+        ctx.arc(tip.x, tip.y, 2.2, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffffff';
+        ctx.shadowColor = 'rgba(255,255,255,0.8)';
+        ctx.shadowBlur = 8;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) {
+        running = false;
+      } else if (!running) {
+        running = true;
+        start = performance.now();
+        requestAnimationFrame(draw);
+      }
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  /* --------------------------------------------
+     Scroll-triggered reveals (all pages)
+     -------------------------------------------- */
+
+  function initScrollReveal() {
+    if (!('IntersectionObserver' in window)) return;
+
+    var GROUPS = [
+      { parent: '.section-header', items: ':scope > *', step: 90 },
+      { parent: '.page-teasers', items: '.page-teaser', step: 80 },
+      { parent: '.detail-grid', items: '.detail-card', step: 70 },
+      { parent: '.plan-grid', items: '.plan-card', step: 100, variant: 'scale' },
+      { parent: '.value-grid', items: '.value-card', step: 70 },
+      { parent: '.team-grid', items: '.team-card', step: 100 },
+      { parent: '.contact-info-grid', items: '.contact-info-card', step: 90 },
+      { parent: '.faq-list', items: '.faq-item', step: 70 },
+      { parent: '.footer-grid', items: ':scope > div', step: 90 },
+      { parent: '.process-timeline', items: '.timeline-step', step: 110 },
+      { parent: '.about-visual', items: '.about-card', step: 140, variant: 'fade' },
+      { parent: '.deliverables-list', items: '.deliverable-tag', step: 35, base: 250 },
+      { parent: '.case-services', items: '.deliverable-tag', step: 35, base: 250 },
+      { parent: '.about-features', items: 'li', step: 60, base: 150 },
+      { parent: '.services-grid', items: '.service-card', step: 80 },
+      { parent: '.work-grid', items: '.work-card', step: 80 },
+      { parent: '.process-steps', items: '.process-step', step: 80 }
+    ];
+
+    var SINGLES = [
+      { sel: '.content-block' },
+      { sel: '.about-content' },
+      { sel: '.contact-info' },
+      { sel: '.contact-form', variant: 'scale' },
+      { sel: '.cta-banner', variant: 'scale' },
+      { sel: '.service-detail-header' },
+      { sel: '.case-study-visual', variant: 'left' },
+      { sel: '.case-study-content', variant: 'right' },
+      { sel: '.testimonial-quote' }
+    ];
+
+    var targets = [];
+
+    function eligible(el) {
+      return !el.closest('.hero, .page-hero') && !el.classList.contains('anim');
+    }
+
+    GROUPS.forEach(function (group) {
+      document.querySelectorAll(group.parent).forEach(function (parent) {
+        if (parent.closest('.hero, .page-hero')) return;
+        var items = parent.querySelectorAll(group.items);
+        var i = 0;
+        items.forEach(function (item) {
+          if (!eligible(item)) return;
+          var delay = Math.min((group.base || 0) + i * group.step, 620);
+          primeAnim(item, group.variant || 'up', delay);
+          targets.push(item);
+          i++;
+        });
+      });
+    });
+
+    SINGLES.forEach(function (single) {
+      document.querySelectorAll(single.sel).forEach(function (el) {
+        if (!eligible(el)) return;
+        primeAnim(el, single.variant || 'up', 0);
+        targets.push(el);
+      });
+    });
+
+    if (!targets.length) return;
+
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          var el = entry.target;
+          if (entry.isIntersecting) {
+            io.unobserve(el);
+            revealNow(el);
+          } else if (entry.boundingClientRect.top < 0) {
+            // Already scrolled past (restored scroll / anchor jump): show instantly.
+            io.unobserve(el);
+            el.style.setProperty('--d', '0s');
+            el.__animDelay = 0;
+            revealNow(el);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -6% 0px' }
+    );
+
+    targets.forEach(function (el) {
+      io.observe(el);
+    });
+  }
+
+  /* --------------------------------------------
+     Stat count-up (home hero)
+     -------------------------------------------- */
+
+  function initCountUp() {
+    var nums = document.querySelectorAll('.hero-stats .stat-number');
+    if (!nums.length || !('IntersectionObserver' in window)) return;
+
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          io.unobserve(entry.target);
+          runCount(entry.target);
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    nums.forEach(function (el) {
+      io.observe(el);
+    });
+
+    function runCount(el) {
+      var raw = el.textContent.trim();
+      var m = raw.match(/^([\d.]+)(.*)$/);
+      if (!m) return;
+
+      var end = parseFloat(m[1]);
+      var suffix = m[2] || '';
+      var decimals = (m[1].split('.')[1] || '').length;
+      var dur = 1400;
+      var start = null;
+
+      function frame(ts) {
+        if (start === null) start = ts;
+        var p = Math.min(1, (ts - start) / dur);
+        var eased = p >= 1 ? 1 : 1 - Math.pow(2, -10 * p);
+        el.textContent = (end * eased).toFixed(decimals) + suffix;
+        if (p < 1) requestAnimationFrame(frame);
+      }
+
+      requestAnimationFrame(frame);
+    }
+  }
+
+  /* --------------------------------------------
+     Pointer-tracked card glow (desktop)
+     -------------------------------------------- */
+
+  function initGlowCards() {
+    var GLOW_SELECTOR =
+      '.page-teaser, .detail-card, .value-card, .team-card, .plan-card, ' +
+      '.contact-info-card, .timeline-step, .about-card, .hero-stats, ' +
+      '.contact-form, .work-card, .service-card, .case-study-visual';
+
+    var cards = document.querySelectorAll(GLOW_SELECTOR);
+    if (!cards.length) return;
+
+    cards.forEach(function (card) {
+      card.classList.add('glow-card');
+    });
+
+    var pending = null;
+    var scheduled = false;
+
+    document.addEventListener(
+      'pointermove',
+      function (e) {
+        pending = e;
+        if (scheduled) return;
+        scheduled = true;
+        requestAnimationFrame(applyGlow);
+      },
+      { passive: true }
+    );
+
+    function applyGlow() {
+      scheduled = false;
+      var e = pending;
+      if (!e) return;
+      var card = e.target && e.target.closest ? e.target.closest('.glow-card') : null;
+      if (!card) return;
+      var rect = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - rect.left).toFixed(1) + 'px');
+      card.style.setProperty('--my', (e.clientY - rect.top).toFixed(1) + 'px');
+    }
+  }
+
+  /* --------------------------------------------
+     3D depth tilt on interactive surfaces
+     -------------------------------------------- */
+
+  function initDepthTilt() {
+    var SELECTOR =
+      '.page-teaser, .detail-card, .value-card, .team-card, .plan-card, ' +
+      '.contact-info-card, .work-card, .service-card, .case-study-visual, ' +
+      '.cta-banner, .contact-form, .hero-stats, .stage-panel';
+
+    var cards = document.querySelectorAll(SELECTOR);
+    if (!cards.length) return;
+
+    cards.forEach(function (card) {
+      card.classList.add('depth-card');
+    });
+
+    // Scene containers get perspective so children read as 3D space.
+    document.querySelectorAll(
+      '.page-teasers, .detail-grid, .value-grid, .team-grid, .plan-grid, ' +
+      '.contact-info-grid, .work-grid, .services-grid, .process-timeline, ' +
+      '.case-study, .hero-stage, .about-visual, .hero-shell'
+    ).forEach(function (scene) {
+      scene.classList.add('depth-scene');
+    });
+
+    var active = null;
+    var pending = null;
+    var scheduled = false;
+
+    function onMove(e) {
+      pending = e;
+      if (scheduled) return;
+      scheduled = true;
+      requestAnimationFrame(tick);
+    }
+
+    function tick() {
+      scheduled = false;
+      var e = pending;
+      if (!e) return;
+
+      var card = e.target && e.target.closest ? e.target.closest('.depth-card') : null;
+      if (active && active !== card) resetCard(active);
+      active = card;
+      if (!card) return;
+
+      var rect = card.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+
+      var px = (e.clientX - rect.left) / rect.width;
+      var py = (e.clientY - rect.top) / rect.height;
+      var rx = ((0.5 - py) * 11).toFixed(2);
+      var ry = ((px - 0.5) * 14).toFixed(2);
+
+      card.style.setProperty('--rx', rx + 'deg');
+      card.style.setProperty('--ry', ry + 'deg');
+      card.style.setProperty('--tz', '22px');
+      card.style.setProperty('--ty', '-4px');
+      card.style.setProperty('--mx', (e.clientX - rect.left).toFixed(1) + 'px');
+      card.style.setProperty('--my', (e.clientY - rect.top).toFixed(1) + 'px');
+      card.classList.add('is-tilting');
+    }
+
+    function resetCard(card) {
+      card.style.setProperty('--rx', '0deg');
+      card.style.setProperty('--ry', '0deg');
+      card.style.setProperty('--tz', '0px');
+      card.style.setProperty('--ty', '0px');
+      card.classList.remove('is-tilting');
+    }
+
+    document.addEventListener('pointermove', onMove, { passive: true });
+    document.addEventListener('pointerleave', function () {
+      if (active) resetCard(active);
+      active = null;
+    });
+  }
+
+  /* --------------------------------------------
+     Scroll-linked section depth (desktop)
+     -------------------------------------------- */
+
+  function initScrollDepth() {
+    if (window.innerWidth < 900) return;
+
+    var sections = document.querySelectorAll('main > section:not(.hero):not(.page-hero), .footer');
+    if (!sections.length) return;
+
+    sections.forEach(function (el) {
+      el.classList.add('depth-scroll');
+    });
+
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      var vh = window.innerHeight || 1;
+
+      sections.forEach(function (el) {
+        var rect = el.getBoundingClientRect();
+        var mid = rect.top + rect.height * 0.35;
+        // -1 at bottom of viewport → +1 at top
+        var p = (vh * 0.5 - mid) / vh;
+        p = Math.max(-1, Math.min(1, p));
+
+        var rot = (p * -2.4).toFixed(3);
+        var z = (Math.abs(p) * -28).toFixed(1);
+        var y = (p * 10).toFixed(1);
+
+        el.style.setProperty('--depth-rx', rot + 'deg');
+        el.style.setProperty('--depth-z', z + 'px');
+        el.style.setProperty('--depth-y', y + 'px');
+      });
+    }
+
+    window.addEventListener(
+      'scroll',
+      function () {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(update);
+        }
+      },
+      { passive: true }
+    );
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth < 900) {
+        sections.forEach(function (el) {
+          el.style.removeProperty('--depth-rx');
+          el.style.removeProperty('--depth-z');
+          el.style.removeProperty('--depth-y');
+        });
+        return;
+      }
+      update();
+    }, { passive: true });
+
+    update();
+  }
+
+  /* --------------------------------------------
+     Hero parallax + scroll fade (desktop)
+     -------------------------------------------- */
+
+  function initHeroParallax() {
+    if (window.innerWidth < 769) return;
+
+    var isHome = document.body.getAttribute('data-page') === 'home';
+    var heroEl;
+    var items = [];
+
+    if (isHome) {
+      heroEl = document.querySelector('.hero');
+      if (!heroEl) return;
+      items = [
+        { el: document.querySelector('.hero-content'), f: 0.1, fade: true },
+        { el: document.querySelector('.hero-stage'), f: 0.18, fade: true },
+        { el: document.querySelector('.hero-grid'), f: 0.22 }
+      ];
+    } else {
+      heroEl = document.querySelector('.page-hero');
+      if (!heroEl) return;
+      items = [
+        { el: heroEl.querySelector('.page-hero-bg'), f: 0.28 },
+        { el: heroEl.querySelector('.container'), f: 0.1 }
+      ];
+    }
+
+    items = items.filter(function (it) {
+      return it.el;
+    });
+    if (!items.length) return;
+
+    var heroH = heroEl.offsetHeight || window.innerHeight;
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      var y = window.scrollY || window.pageYOffset || 0;
+      var yc = Math.min(y, heroH * 1.25);
+
+      items.forEach(function (it) {
+        it.el.style.translate = '0 ' + (yc * it.f).toFixed(1) + 'px';
+        if (it.fade) {
+          var op = 1 - Math.min(1, y / (heroH * 0.9));
+          it.el.style.opacity = op < 1 ? op.toFixed(3) : '';
+        }
+      });
+    }
+
+    window.addEventListener(
+      'scroll',
+      function () {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(update);
+        }
+      },
+      { passive: true }
+    );
+
+    update();
+  }
+
+  /* --------------------------------------------
+     Page transitions (exit fade, enter handled in CSS)
+     -------------------------------------------- */
+
+  function initPageTransitions() {
+    document.addEventListener('click', function (e) {
+      if (e.defaultPrevented || e.button !== 0) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+      var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+      if (!a) return;
+      if (a.target && a.target !== '_self') return;
+      if (a.hasAttribute('download')) return;
+
+      var href = a.getAttribute('href');
+      if (!href || href.charAt(0) === '#') return;
+      if (/^(mailto:|tel:|javascript:)/i.test(href)) return;
+
+      var url;
+      try {
+        url = new URL(a.href, window.location.href);
+      } catch (err) {
+        return;
+      }
+
+      if (url.origin !== window.location.origin) return;
+      if (url.pathname === window.location.pathname && url.hash) return;
+
+      e.preventDefault();
+      docEl.classList.add('page-exit');
+
+      setTimeout(function () {
+        window.location.href = a.href;
+      }, 230);
+
+      // Safety: if navigation is somehow interrupted, restore the page.
+      setTimeout(function () {
+        docEl.classList.remove('page-exit');
+      }, 1800);
+    });
+
+    window.addEventListener('pageshow', function (e) {
+      if (e.persisted) docEl.classList.remove('page-exit');
+    });
+  }
+
+  /* --------------------------------------------
+     Hover prefetch for internal pages
+     -------------------------------------------- */
+
+  function initPrefetch() {
+    if (window.location.protocol === 'file:') return;
+
+    var done = {};
+
+    document.addEventListener(
+      'pointerover',
+      function (e) {
+        var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+        if (!a) return;
+        var href = a.getAttribute('href');
+        if (!href || done[href] || href.charAt(0) === '#') return;
+        if (/^(mailto:|tel:|javascript:)/i.test(href)) return;
+        if (/^(https?:)?\/\//i.test(href)) return;
+        // Internal clean URLs or legacy .html
+        if (!(href.charAt(0) === '/' || /\.html(?:#|$)/.test(href))) return;
+        done[href] = true;
+        var link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = href;
+        document.head.appendChild(link);
+      },
+      { passive: true }
+    );
+  }
+
+  /* --------------------------------------------
+     Logo interactions (unchanged)
+     -------------------------------------------- */
 
   function initLogoClickArea() {
     var visual = document.querySelector('#site-logo .logo-visual');
@@ -184,7 +956,7 @@
   }
 
   function initMobileHeroLogoFollow() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!motionOK) return;
     if (!window.matchMedia('(max-width: 768px)').matches) return;
 
     var zone = document.querySelector('.hero-mobile-mark');
@@ -272,7 +1044,7 @@
   }
 
   function initLogoParallax() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!motionOK) return;
     if (window.matchMedia('(max-width: 768px)').matches) return;
 
     var anchor = document.getElementById('site-logo');

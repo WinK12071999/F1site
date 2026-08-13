@@ -1,26 +1,12 @@
 (function () {
   'use strict';
 
-  function getRoot() {
-    var scripts = document.getElementsByTagName('script');
-    for (var i = 0; i < scripts.length; i++) {
-      var src = scripts[i].getAttribute('src') || '';
-      if (/layout\.js(?:\?.*)?$/.test(src)) {
-        return src.replace(/js\/layout\.js(?:\?.*)?$/, '');
-      }
-    }
-    return '';
-  }
-
-  var root = getRoot();
-  var homeHref = root || './';
-
   var NAV = [
-    { id: 'services', href: root + 'services/', label: 'Services' },
-    { id: 'about', href: root + 'about/', label: 'About' },
-    { id: 'process', href: root + 'process/', label: 'Process' },
-    { id: 'work', href: root + 'work/', label: 'Work' },
-    { id: 'contact', href: root + 'contact/', label: 'Get in Touch', cta: true }
+    { id: 'services', href: '/services', label: 'Services' },
+    { id: 'about', href: '/about', label: 'About' },
+    { id: 'process', href: '/process', label: 'Process' },
+    { id: 'work', href: '/work', label: 'Work' },
+    { id: 'contact', href: '/contact', label: 'Get in Touch', cta: true }
   ];
 
   var currentPage = document.body.getAttribute('data-page') || '';
@@ -38,7 +24,7 @@
     }).join('');
   }
 
-  var logoPath = root + 'logos/f1-logo-transparent.png';
+  var logoPath = '/logos/f1-logo-transparent.png';
 
   var logoFeaturedHtml =
     '<div class="logo-anchor" id="site-logo">' +
@@ -49,7 +35,7 @@
             '<img src="' + logoPath + '" alt="F1site" class="logo-img logo-img-featured" width="1536" height="1024">' +
           '</span>' +
         '</span>' +
-        '<a href="' + homeHref + '" class="logo logo-hit-link" aria-label="F1site home"></a>' +
+        '<a href="/" class="logo logo-hit-link" aria-label="F1site home"></a>' +
       '</div>' +
     '</div>';
 
@@ -65,7 +51,7 @@
     '<div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>';
 
   var footerLogoHtml =
-    '<a href="' + homeHref + '" class="logo" aria-label="F1site home">' +
+    '<a href="/" class="logo" aria-label="F1site home">' +
       '<img src="' + logoPath + '" alt="F1site" class="logo-img logo-img-footer" width="1536" height="1024">' +
     '</a>';
 
@@ -79,24 +65,24 @@
         '<div class="footer-links">' +
           '<h4>Services</h4>' +
           '<ul>' +
-            '<li><a href="' + root + 'services/#web-design">Web Design</a></li>' +
-            '<li><a href="' + root + 'services/#graphic-design">Graphic Design</a></li>' +
-            '<li><a href="' + root + 'services/#maintenance">Maintenance</a></li>' +
+            '<li><a href="/services#web-design">Web Design</a></li>' +
+            '<li><a href="/services#graphic-design">Graphic Design</a></li>' +
+            '<li><a href="/services#maintenance">Maintenance</a></li>' +
           '</ul>' +
         '</div>' +
         '<div class="footer-links">' +
           '<h4>Company</h4>' +
           '<ul>' +
-            '<li><a href="' + root + 'about/">About</a></li>' +
-            '<li><a href="' + root + 'process/">Process</a></li>' +
-            '<li><a href="' + root + 'work/">Work</a></li>' +
-            '<li><a href="' + root + 'contact/">Contact</a></li>' +
+            '<li><a href="/about">About</a></li>' +
+            '<li><a href="/process">Process</a></li>' +
+            '<li><a href="/work">Work</a></li>' +
+            '<li><a href="/contact">Contact</a></li>' +
           '</ul>' +
         '</div>' +
         '<div class="footer-links">' +
           '<h4>Connect</h4>' +
           '<ul>' +
-            '<li><a href="mailto:hello@f1digital.com">Email</a></li>' +
+            '<li><a href="mailto:projects@f1site.com">Email</a></li>' +
             '<li><a href="#" aria-label="LinkedIn">LinkedIn</a></li>' +
             '<li><a href="#" aria-label="Instagram">Instagram</a></li>' +
           '</ul>' +
