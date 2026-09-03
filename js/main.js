@@ -107,13 +107,23 @@
     }
 
     if (motionOK) {
-      initHeroIntro();
-      initHeroCycle();
-      initHeroSparklines();
-      initScrollReveal();
-      initCountUp();
-      initHeroParallax();
-      initPageTransitions();
+      var startMotion = function () {
+        initHeroIntro();
+        initHeroCycle();
+        initHeroSparklines();
+        initScrollReveal();
+        initCountUp();
+        initHeroParallax();
+        initPageTransitions();
+      };
+      if (
+        document.documentElement.classList.contains('cin-playing') ||
+        document.documentElement.classList.contains('cin-pending')
+      ) {
+        window.addEventListener('f1site:intro-done', startMotion, { once: true });
+      } else {
+        startMotion();
+      }
     }
     if (motionOK && finePointer) {
       initGlowCards();

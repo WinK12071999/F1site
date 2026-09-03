@@ -19,8 +19,10 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/cinematic-intro.css">
   <link rel="stylesheet" href="css/circuit-journey.css">
-  <link rel="preload" as="image" href="assets/circuit/ocean-poster.jpg">
-  <link rel="preload" as="video" href="assets/circuit/ocean-waves-fast.mp4">
+  <link rel="stylesheet" href="css/rain-cinema.css">
+  <link rel="preload" as="image" href="assets/cinema/ferrari-rain-wide.jpg">
+  <link rel="preload" as="image" href="assets/cinema/ferrari-rain.jpg">
+  <link rel="preload" as="video" href="assets/cinema/ferrari-rain-drive.mp4" type="video/mp4">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="logos/favicon-48.png">
   <link rel="icon" type="image/png" sizes="192x192" href="logos/favicon-192.png">
@@ -28,7 +30,7 @@
   <script>
     (function () {
       try {
-        if (sessionStorage.getItem('f1site-cin-intro-v1') === '1') return;
+        if (sessionStorage.getItem('f1site-cin-intro-v2') === '1') return;
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
         if (/(?:\?|&)nointro=1(?:&|$)/.test(location.search)) return;
         document.documentElement.classList.add('cin-pending');
@@ -36,7 +38,23 @@
     })();
   </script>
 </head>
-<body data-page="home">
+<body data-page="home" class="has-cinema has-circuit">
+
+  <div class="rain-cinema" aria-hidden="true">
+    <div class="rain-bloom"></div>
+    <div class="rain-camera">
+      <picture>
+        <source media="(min-width: 769px)" srcset="assets/cinema/ferrari-rain-wide.jpg">
+        <img class="rain-still" src="assets/cinema/ferrari-rain.jpg" alt="" width="586" height="1024" decoding="async" fetchpriority="high">
+      </picture>
+      <video class="rain-drive" muted autoplay loop playsinline webkit-playsinline preload="auto" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/ferrari-rain-wide.jpg">
+        <source src="assets/cinema/ferrari-rain-drive.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="rain-veil"></div>
+    <div class="rain-vignette"></div>
+    <div class="rain-grain"></div>
+  </div>
 
   <div id="site-header"></div>
 
@@ -82,11 +100,10 @@
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
-    <section class="section services">
+    <section class="section services" id="capabilities">
       <div class="container">
         <div class="section-header centered">
           <p class="section-eyebrow">What We Do</p>
@@ -135,8 +152,8 @@
   <div id="site-footer"></div>
 
   <script src="js/layout.js"></script>
+  <script src="js/rain-cinema.js"></script>
   <script src="js/cinematic-intro.js"></script>
-  <script src="js/circuit-journey.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
