@@ -16,14 +16,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/circuit-journey.css">
-  <link rel="stylesheet" href="css/contact-cinema.css?v=2">
-  <link rel="preload" as="video" href="assets/cinema/contact/hero.mp4?v=studio" type="video/mp4">
-  <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="48x48" href="logos/favicon-48.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="logos/favicon-192.png">
-  <link rel="apple-touch-icon" href="logos/apple-touch-icon.png">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/circuit-journey.css">
+  <link rel="stylesheet" href="/css/contact-cinema.css?v=fast">
+  <link rel="preload" as="image" href="/assets/cinema/contact/hero.jpg?v=fast" fetchpriority="high">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="/logos/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/logos/favicon-192.png">
+  <link rel="apple-touch-icon" href="/logos/apple-touch-icon.png">
 </head>
 <body data-page="contact" class="has-circuit has-ctc-cinema">
 
@@ -35,8 +35,9 @@
       <div class="ctc-hero-stage">
         <div class="ctc-bars ctc-bars-top"></div>
         <div class="ctc-hero-bloom"></div>
-        <video class="ctc-hero-loop" muted autoplay playsinline webkit-playsinline preload="auto" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/contact/hero.jpg?v=studio">
-          <source src="assets/cinema/contact/hero.mp4?v=studio" type="video/mp4">
+        <img class="ctc-hero-still" src="/assets/cinema/contact/hero.jpg?v=fast" alt="" fetchpriority="high" decoding="async">
+        <video class="ctc-hero-loop" muted autoplay playsinline webkit-playsinline preload="metadata" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="/assets/cinema/contact/hero.jpg?v=fast">
+          <source src="/assets/cinema/contact/hero.mp4?v=studio" type="video/mp4">
         </video>
         <div class="ctc-hero-veil"></div>
         <div class="ctc-hero-vignette"></div>
@@ -187,8 +188,8 @@
 
   <div id="site-footer"></div>
 
-  <script src="js/layout.js"></script>
-  <script src="js/contact-cinema.js"></script>
-  <script src="js/main.js"></script>
+  <script src="/js/layout.js?v=urls"></script>
+  <script src="/js/contact-cinema.js?v=fast"></script>
+  <script src="/js/main.js"></script>
 </body>
 </html>

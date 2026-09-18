@@ -44,26 +44,33 @@
     var parent = primary.parentNode;
     if (!parent) return { play: function () { play(primary); }, pause: function () {}, videos: [primary] };
 
-    var second = primary.cloneNode(true);
-    second.removeAttribute('id');
-    second.removeAttribute('autoplay');
-    second.classList.add('prc-seam');
-    parent.insertBefore(second, primary.nextSibling);
-
-    var pair = [primary, second];
+    var second = null;
+    var pair = [primary];
     var live = 0;
     var swapping = false;
     var armed = false;
 
-    pair.forEach(function (video) {
-      prep(video);
-    });
+    prep(primary);
     primary.classList.add('is-seam-live');
+
+    function ensureSecond() {
+      if (second) return second;
+      second = primary.cloneNode(true);
+      second.removeAttribute('id');
+      second.removeAttribute('autoplay');
+      second.classList.add('prc-seam');
+      second.preload = 'auto';
+      parent.insertBefore(second, primary.nextSibling);
+      prep(second);
+      pair = [primary, second];
+      bind(second);
+      return second;
+    }
 
     function swap() {
       if (swapping || reduced) return;
       var from = pair[live];
-      var to = pair[1 - live];
+      var to = ensureSecond();
       if (!from.duration) return;
       swapping = true;
       try {
@@ -82,23 +89,29 @@
       }, FADE * 1000);
     }
 
-    pair.forEach(function (video, index) {
+    function bind(video) {
       video.addEventListener('timeupdate', function () {
-        if (!armed || index !== live || swapping) return;
+        if (!armed || pair[live] !== video || swapping) return;
+        if (video.duration && video.currentTime >= video.duration - FADE - 1.25) {
+          ensureSecond();
+        }
         if (video.duration && video.currentTime >= video.duration - FADE - 0.04) {
           swap();
         }
       });
       video.addEventListener('ended', function () {
-        if (!armed || index !== live || swapping) return;
+        if (!armed || pair[live] !== video || swapping) return;
         swap();
       });
-    });
+    }
+
+    bind(primary);
 
     return {
       videos: pair,
       play: function () {
         armed = true;
+        if (primary.preload !== 'auto') primary.preload = 'auto';
         play(pair[live]);
       },
       pause: function () {

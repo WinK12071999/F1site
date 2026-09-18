@@ -16,14 +16,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/circuit-journey.css">
-  <link rel="stylesheet" href="css/work-cinema.css?v=fit">
-  <link rel="preload" as="video" href="assets/cinema/work/hero.mp4?v=studio" type="video/mp4">
-  <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="48x48" href="logos/favicon-48.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="logos/favicon-192.png">
-  <link rel="apple-touch-icon" href="logos/apple-touch-icon.png">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/circuit-journey.css">
+  <link rel="stylesheet" href="/css/work-cinema.css?v=fast">
+  <link rel="preload" as="image" href="/assets/cinema/work/hero.jpg?v=fast" fetchpriority="high">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="/logos/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/logos/favicon-192.png">
+  <link rel="apple-touch-icon" href="/logos/apple-touch-icon.png">
 </head>
 <body data-page="work" class="has-circuit has-wrk-cinema">
 
@@ -35,8 +35,9 @@
       <div class="wrk-hero-stage">
         <div class="wrk-bars wrk-bars-top"></div>
         <div class="wrk-hero-bloom"></div>
-        <video class="wrk-hero-loop" muted autoplay playsinline webkit-playsinline preload="auto" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/work/hero.jpg?v=studio">
-          <source src="assets/cinema/work/hero.mp4?v=studio" type="video/mp4">
+        <img class="wrk-hero-still" src="/assets/cinema/work/hero.jpg?v=fast" alt="" fetchpriority="high" decoding="async">
+        <video class="wrk-hero-loop" muted autoplay playsinline webkit-playsinline preload="metadata" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="/assets/cinema/work/hero.jpg?v=fast">
+          <source src="/assets/cinema/work/hero.mp4?v=studio" type="video/mp4">
         </video>
         <div class="wrk-hero-veil"></div>
         <div class="wrk-hero-vignette"></div>
@@ -56,9 +57,9 @@
 
       <article class="wrk-poster" id="gcsio">
         <div class="wrk-poster-stage">
-          <img class="wrk-poster-still" src="assets/cinema/work/gcsio.jpg?v=studio" alt="">
-          <video class="wrk-loop" muted playsinline preload="metadata" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/work/gcsio.jpg?v=studio">
-            <source src="assets/cinema/work/gcsio.mp4?v=studio" type="video/mp4">
+          <img class="wrk-poster-still" decoding="async" src="/assets/cinema/work/gcsio.jpg?v=fast" alt="">
+          <video class="wrk-loop" muted playsinline preload="none" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="/assets/cinema/work/gcsio.jpg?v=fast">
+            <source src="/assets/cinema/work/gcsio.mp4?v=studio" type="video/mp4">
           </video>
           <div class="wrk-poster-veil"></div>
           <div class="wrk-bars wrk-bars-top"></div>
@@ -68,7 +69,7 @@
           <p class="wrk-poster-index" aria-hidden="true">01</p>
           <p class="wrk-poster-meta">Organization Site</p>
           <div class="wrk-logo-plate">
-            <img class="project-logo" src="logos/project-logos/gcsio.png?v=fit" alt="GCSIO">
+            <img class="project-logo" src="/logos/project-logos/gcsio.png?v=fit" alt="GCSIO">
           </div>
           <h2>GCSIO</h2>
           <p>Website design and improvements for an organizational website — focused on clear information structure, modern visuals, and an experience that works across devices.</p>
@@ -79,9 +80,9 @@
 
       <article class="wrk-poster" id="abefer">
         <div class="wrk-poster-stage">
-          <img class="wrk-poster-still" src="assets/cinema/work/abefer.jpg?v=studio" alt="">
-          <video class="wrk-loop" muted playsinline preload="metadata" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/work/abefer.jpg?v=studio">
-            <source src="assets/cinema/work/abefer.mp4?v=studio" type="video/mp4">
+          <img class="wrk-poster-still" loading="lazy" decoding="async" src="/assets/cinema/work/abefer.jpg?v=fast" alt="">
+          <video class="wrk-loop" muted playsinline preload="none" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="/assets/cinema/work/abefer.jpg?v=fast">
+            <source src="/assets/cinema/work/abefer.mp4?v=studio" type="video/mp4">
           </video>
           <div class="wrk-poster-veil"></div>
           <div class="wrk-bars wrk-bars-top"></div>
@@ -91,7 +92,7 @@
           <p class="wrk-poster-index" aria-hidden="true">02</p>
           <p class="wrk-poster-meta">Nonprofit</p>
           <div class="wrk-logo-plate">
-            <img class="project-logo" src="logos/project-logos/abefer-logo-light.png?v=fit" alt="ABEFER">
+            <img class="project-logo" src="/logos/project-logos/abefer-logo-light.png?v=fit" alt="ABEFER">
           </div>
           <h2>ABEFER</h2>
           <p>Website work for a nonprofit organization — improving readability, navigation, and the overall presentation of programs, updates, and community information.</p>
@@ -102,9 +103,9 @@
 
       <article class="wrk-poster" id="scanspe">
         <div class="wrk-poster-stage">
-          <img class="wrk-poster-still" src="assets/cinema/work/scanspe.jpg?v=studio" alt="">
-          <video class="wrk-loop" muted playsinline preload="metadata" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/work/scanspe.jpg?v=studio">
-            <source src="assets/cinema/work/scanspe.mp4?v=studio" type="video/mp4">
+          <img class="wrk-poster-still" loading="lazy" decoding="async" src="/assets/cinema/work/scanspe.jpg?v=fast" alt="">
+          <video class="wrk-loop" muted playsinline preload="none" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="/assets/cinema/work/scanspe.jpg?v=fast">
+            <source src="/assets/cinema/work/scanspe.mp4?v=studio" type="video/mp4">
           </video>
           <div class="wrk-poster-veil"></div>
           <div class="wrk-bars wrk-bars-top"></div>
@@ -114,7 +115,7 @@
           <p class="wrk-poster-index" aria-hidden="true">03</p>
           <p class="wrk-poster-meta">Web App</p>
           <div class="wrk-logo-plate">
-            <img class="project-logo" src="logos/project-logos/scanspe-logo.png?v=fit" alt="ScanSpe">
+            <img class="project-logo" src="/logos/project-logos/scanspe-logo.png?v=fit" alt="ScanSpe">
           </div>
           <h2>ScanSpe</h2>
           <p>Landing experience and product-facing web work for a digital receipts platform — focused on clean UI, fast performance, and clear feature communication.</p>
@@ -125,9 +126,9 @@
 
       <article class="wrk-poster" id="oneottawa">
         <div class="wrk-poster-stage">
-          <img class="wrk-poster-still" src="assets/cinema/work/oneottawa.jpg?v=studio" alt="">
-          <video class="wrk-loop" muted playsinline preload="metadata" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/work/oneottawa.jpg?v=studio">
-            <source src="assets/cinema/work/oneottawa.mp4?v=studio" type="video/mp4">
+          <img class="wrk-poster-still" loading="lazy" decoding="async" src="/assets/cinema/work/oneottawa.jpg?v=fast" alt="">
+          <video class="wrk-loop" muted playsinline preload="none" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="/assets/cinema/work/oneottawa.jpg?v=fast">
+            <source src="/assets/cinema/work/oneottawa.mp4?v=studio" type="video/mp4">
           </video>
           <div class="wrk-poster-veil"></div>
           <div class="wrk-bars wrk-bars-top"></div>
@@ -137,7 +138,7 @@
           <p class="wrk-poster-index" aria-hidden="true">04</p>
           <p class="wrk-poster-meta">Local Organization</p>
           <div class="wrk-logo-plate">
-            <img class="project-logo" src="logos/project-logos/one-ottawa-logo.png?v=fit" alt="OneOttawa">
+            <img class="project-logo" src="/logos/project-logos/one-ottawa-logo.png?v=fit" alt="OneOttawa">
           </div>
           <h2>OneOttawa</h2>
           <p>Website work for a local/community organization — improving layout consistency, clarity of messaging, and overall usability for visitors and stakeholders.</p>
@@ -148,9 +149,9 @@
 
       <article class="wrk-poster" id="swisderm">
         <div class="wrk-poster-stage">
-          <img class="wrk-poster-still" src="assets/cinema/work/swisderm.jpg?v=studio" alt="">
-          <video class="wrk-loop" muted playsinline preload="metadata" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/work/swisderm.jpg?v=studio">
-            <source src="assets/cinema/work/swisderm.mp4?v=studio" type="video/mp4">
+          <img class="wrk-poster-still" loading="lazy" decoding="async" src="/assets/cinema/work/swisderm.jpg?v=fast" alt="">
+          <video class="wrk-loop" muted playsinline preload="none" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="/assets/cinema/work/swisderm.jpg?v=fast">
+            <source src="/assets/cinema/work/swisderm.mp4?v=studio" type="video/mp4">
           </video>
           <div class="wrk-poster-veil"></div>
           <div class="wrk-bars wrk-bars-top"></div>
@@ -160,7 +161,7 @@
           <p class="wrk-poster-index" aria-hidden="true">05</p>
           <p class="wrk-poster-meta">Healthcare</p>
           <div class="wrk-logo-plate">
-            <img class="project-logo" src="logos/project-logos/swisderm-logo.png" alt="Swisderm">
+            <img class="project-logo" src="/logos/project-logos/swisderm-logo.png" alt="Swisderm">
           </div>
           <h2>Swisderm</h2>
           <p>Website design and development for a dermatology practice — focused on a professional presentation of services, clear patient information, and a polished brand experience across devices.</p>
@@ -171,9 +172,9 @@
 
       <article class="wrk-poster" id="flotilla">
         <div class="wrk-poster-stage">
-          <img class="wrk-poster-still" src="assets/cinema/work/flotilla.jpg?v=studio" alt="">
-          <video class="wrk-loop" muted playsinline preload="metadata" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/work/flotilla.jpg?v=studio">
-            <source src="assets/cinema/work/flotilla.mp4?v=studio" type="video/mp4">
+          <img class="wrk-poster-still" loading="lazy" decoding="async" src="/assets/cinema/work/flotilla.jpg?v=fast" alt="">
+          <video class="wrk-loop" muted playsinline preload="none" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="/assets/cinema/work/flotilla.jpg?v=fast">
+            <source src="/assets/cinema/work/flotilla.mp4?v=studio" type="video/mp4">
           </video>
           <div class="wrk-poster-veil"></div>
           <div class="wrk-bars wrk-bars-top"></div>
@@ -197,7 +198,7 @@
         <h2>Have a project in mind?</h2>
         <p>We'd love to add your organization to this list. Tell us about your goals and we'll share relevant examples from our portfolio.</p>
         <div class="cta-banner">
-          <a href="contact.html" class="btn btn-primary">Discuss Your Project</a>
+          <a href="/contact" class="btn btn-primary">Discuss Your Project</a>
         </div>
       </div>
     </section>
@@ -206,8 +207,8 @@
 
   <div id="site-footer"></div>
 
-  <script src="js/layout.js"></script>
-  <script src="js/work-cinema.js"></script>
-  <script src="js/main.js"></script>
+  <script src="/js/layout.js?v=urls"></script>
+  <script src="/js/work-cinema.js?v=fast"></script>
+  <script src="/js/main.js"></script>
 </body>
 </html>

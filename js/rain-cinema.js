@@ -8,8 +8,8 @@
   if (!body || body.getAttribute('data-page') !== 'home') return;
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var VIDEO_SRC = 'assets/cinema/atelier-loop.mp4?v=studio';
-  var POSTER = 'assets/cinema/atelier-loop.jpg?v=studio';
+  var VIDEO_SRC = '/assets/cinema/atelier-loop.mp4?v=studio';
+  var POSTER = '/assets/cinema/atelier-loop.jpg?v=fast';
   var RATE = 1;
   var FADE_SEC = 0.55;
   var LIVERIES = [
@@ -75,8 +75,9 @@
   }
 
   function videoHtml(extraClass) {
+    var preload = extraClass.indexOf('is-live') !== -1 ? 'metadata' : 'none';
     return (
-      '<video class="rain-drive ' + extraClass + '" muted playsinline webkit-playsinline preload="auto" ' +
+      '<video class="rain-drive ' + extraClass + '" muted playsinline webkit-playsinline preload="' + preload + '" ' +
       'disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" ' +
       'poster="' + POSTER + '">' +
         '<source src="' + VIDEO_SRC + '" type="video/mp4">' +
@@ -94,6 +95,7 @@
         '<div class="rain-bars rain-bars-top"></div>' +
         '<div class="rain-bloom"></div>' +
         '<div class="rain-camera">' +
+          '<img class="rain-still" src="' + POSTER + '" alt="" decoding="async">' +
           '<canvas class="rain-paint"></canvas>' +
           videoHtml('is-live') +
           videoHtml('') +
@@ -118,6 +120,9 @@
     }
 
     canvas = root.querySelector('.rain-paint');
+    if (camera && !root.querySelector('.rain-still')) {
+      camera.insertAdjacentHTML('afterbegin', '<img class="rain-still" src="' + POSTER + '" alt="" decoding="async">');
+    }
     videos = [].slice.call(root.querySelectorAll('.rain-drive'));
     if (videos.length === 1) {
       videos[0].insertAdjacentHTML('afterend', videoHtml(''));
@@ -132,7 +137,6 @@
     video.playsInline = true;
     video.controls = false;
     video.loop = false;
-    video.preload = 'auto';
     video.disablePictureInPicture = true;
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
@@ -344,8 +348,10 @@
   function paintFrame() {
     if (!painter) return;
     var a = videos[live];
+    if (!a || a.readyState < 2) return;
     var b = videos[1 - live];
     painter.draw(a, b, fadeAmount(), [hueLive, satLive], [hueNext, satNext]);
+    if (root && !root.classList.contains('has-paint')) root.classList.add('has-paint');
   }
 
   function startCinema() {
@@ -389,6 +395,7 @@
       swapping = true;
       swapStarted = performance.now();
       if (b) {
+        b.preload = 'auto';
         applyLivery(nextLivery(), true);
         playClip(b, 0);
         b.classList.add('is-live');
@@ -428,7 +435,7 @@
     introBlend = introActive() ? 1 : 0;
     videos.forEach(prep);
     painter = createPainter(canvas);
-    if (painter && root) root.classList.add('has-paint');
+    if (videos[1]) videos[1].preload = 'none';
 
     if (videos[0]) {
       videos[0].addEventListener('loadedmetadata', function () {

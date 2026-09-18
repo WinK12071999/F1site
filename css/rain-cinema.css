@@ -29,10 +29,26 @@ body.has-cinema::after {
   position: absolute;
   inset: -18%;
   background:
-    center / cover no-repeat url('../assets/cinema/atelier-loop.jpg?v=studio');
+    center / cover no-repeat url('/assets/cinema/atelier-loop.jpg?v=fast');
   filter: blur(52px) saturate(1.35) brightness(0.38);
   transform: scale(1.08);
   opacity: 0.9;
+}
+
+.rain-still {
+  position: absolute;
+  left: -6%;
+  top: -8%;
+  width: 112%;
+  height: 118%;
+  object-fit: cover;
+  object-position: 50% 46%;
+  display: block;
+  pointer-events: none;
+}
+
+.rain-cinema.has-paint .rain-still {
+  opacity: 0;
 }
 
 .rain-camera {
@@ -235,5 +251,9 @@ html.cin-playing body > .rain-cinema {
   .rain-drive,
   .rain-paint {
     display: none;
+  }
+
+  .rain-still {
+    opacity: 1 !important;
   }
 }
