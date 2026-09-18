@@ -15,151 +15,157 @@
   <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/circuit-journey.css">
-  <link rel="stylesheet" href="css/rain-cinema.css">
-  <link rel="preload" as="image" href="assets/cinema/ferrari-rain-wide.jpg">
-  <link rel="preload" as="video" href="assets/cinema/ferrari-rain-drive.mp4" type="video/mp4">
+  <link rel="stylesheet" href="css/process-cinema.css?v=2">
+  <link rel="preload" as="video" href="assets/cinema/process/hero.mp4?v=studio" type="video/mp4">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="logos/favicon-48.png">
   <link rel="icon" type="image/png" sizes="192x192" href="logos/favicon-192.png">
   <link rel="apple-touch-icon" href="logos/apple-touch-icon.png">
 </head>
-<body data-page="process" class="has-cinema has-circuit">
+<body data-page="process" class="has-circuit has-prc-cinema">
 
   <div id="site-header"></div>
 
   <main>
 
-    <section class="page-hero">
-      <div class="page-hero-bg"></div>
-      <div class="container">
+    <section class="prc-hero" aria-label="Process title">
+      <div class="prc-hero-stage">
+        <div class="prc-bars prc-bars-top"></div>
+        <div class="prc-hero-bloom"></div>
+        <video class="prc-hero-loop" muted autoplay playsinline webkit-playsinline preload="auto" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/process/hero.jpg?v=studio">
+          <source src="assets/cinema/process/hero.mp4?v=studio" type="video/mp4">
+        </video>
+        <div class="prc-hero-veil"></div>
+        <div class="prc-hero-vignette"></div>
+        <div class="prc-bars prc-bars-bot"></div>
+      </div>
+      <div class="container prc-hero-copy">
         <p class="section-eyebrow">How We Work</p>
         <h1 class="section-title">A clear path from brief to launch</h1>
         <p class="section-desc">
-          Every project follows a structured, transparent process. You'll know exactly what's happening at each stage, who's responsible, and when to expect deliverables. Nothing moves forward without your sign-off.
+          Four acts. One picture. Scroll the reel — every stage is signed off before the next cut.
         </p>
+        <a class="prc-hero-cue" href="#reel">Roll picture</a>
       </div>
     </section>
 
-    <section class="page-content">
-      <div class="container">
-        <div class="process-timeline">
+    <section class="prc-strip" id="reel" aria-label="Process timeline">
+      <div class="prc-strip-pin">
+        <div class="prc-sprocket prc-sprocket--l" aria-hidden="true"></div>
+        <div class="prc-sprocket prc-sprocket--r" aria-hidden="true"></div>
+        <div class="prc-cut" aria-hidden="true"></div>
+        <p class="prc-tc" aria-hidden="true"><span data-prc-tc>01:00:00:00</span></p>
+        <p class="prc-act-mark" aria-hidden="true"><span data-prc-act>01</span> / 04</p>
+        <div class="prc-track">
 
-          <article class="timeline-step">
-            <div class="timeline-num">01</div>
-            <div class="timeline-content">
+          <article class="prc-act is-on" id="discovery" data-act="01">
+            <div class="prc-act-media">
+              <img class="prc-act-poster" src="assets/cinema/process/discovery.jpg?v=studio" alt="">
+              <video class="prc-loop" muted playsinline preload="metadata" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/process/discovery.jpg?v=studio">
+                <source src="assets/cinema/process/discovery.mp4?v=studio" type="video/mp4">
+              </video>
+              <div class="prc-act-gate"></div>
+            </div>
+            <div class="prc-act-copy">
+              <p class="prc-act-kicker">Act One</p>
               <h2>Discovery</h2>
               <p>We begin by deeply understanding your organization — its goals, audience, stakeholders, and constraints. This phase sets the foundation for every decision that follows.</p>
-              <div class="timeline-meta">
-                <div>
-                  <span>Duration</span>
-                  <p>1–2 weeks</p>
-                </div>
-                <div>
-                  <span>Your involvement</span>
-                  <p>Workshops &amp; interviews</p>
-                </div>
-                <div>
-                  <span>Outcome</span>
-                  <p>Project brief &amp; roadmap</p>
-                </div>
-              </div>
-              <div class="deliverables-list">
-                <span class="deliverable-tag">Stakeholder interviews</span>
-                <span class="deliverable-tag">Competitive audit</span>
-                <span class="deliverable-tag">Audience personas</span>
-                <span class="deliverable-tag">Sitemap &amp; content plan</span>
-                <span class="deliverable-tag">Technical requirements doc</span>
-              </div>
+              <dl class="prc-meta">
+                <div><dt>Duration</dt><dd>1–2 weeks</dd></div>
+                <div><dt>Your involvement</dt><dd>Workshops &amp; interviews</dd></div>
+                <div><dt>Outcome</dt><dd>Project brief &amp; roadmap</dd></div>
+              </dl>
+              <ul class="prc-credits">
+                <li>Stakeholder interviews</li>
+                <li>Competitive audit</li>
+                <li>Audience personas</li>
+                <li>Sitemap &amp; content plan</li>
+                <li>Technical requirements</li>
+              </ul>
             </div>
           </article>
 
-          <article class="timeline-step">
-            <div class="timeline-num">02</div>
-            <div class="timeline-content">
+          <article class="prc-act" id="design" data-act="02">
+            <div class="prc-act-media">
+              <img class="prc-act-poster" src="assets/cinema/process/design.jpg?v=studio" alt="">
+              <video class="prc-loop" muted playsinline preload="metadata" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/process/design.jpg?v=studio">
+                <source src="assets/cinema/process/design.mp4?v=studio" type="video/mp4">
+              </video>
+              <div class="prc-act-gate"></div>
+            </div>
+            <div class="prc-act-copy">
+              <p class="prc-act-kicker">Act Two</p>
               <h2>Design</h2>
               <p>Wireframes evolve into polished visual designs. We present concepts at each stage for your feedback, refining until the design fully represents your brand and serves your users.</p>
-              <div class="timeline-meta">
-                <div>
-                  <span>Duration</span>
-                  <p>3–5 weeks</p>
-                </div>
-                <div>
-                  <span>Your involvement</span>
-                  <p>Review &amp; feedback rounds</p>
-                </div>
-                <div>
-                  <span>Outcome</span>
-                  <p>Approved design system</p>
-                </div>
-              </div>
-              <div class="deliverables-list">
-                <span class="deliverable-tag">Low-fidelity wireframes</span>
-                <span class="deliverable-tag">High-fidelity mockups</span>
-                <span class="deliverable-tag">Mobile &amp; desktop layouts</span>
-                <span class="deliverable-tag">Component library</span>
-                <span class="deliverable-tag">Interactive prototype</span>
-              </div>
+              <dl class="prc-meta">
+                <div><dt>Duration</dt><dd>3–5 weeks</dd></div>
+                <div><dt>Your involvement</dt><dd>Review &amp; feedback rounds</dd></div>
+                <div><dt>Outcome</dt><dd>Approved design system</dd></div>
+              </dl>
+              <ul class="prc-credits">
+                <li>Low-fidelity wireframes</li>
+                <li>High-fidelity mockups</li>
+                <li>Mobile &amp; desktop layouts</li>
+                <li>Component library</li>
+                <li>Interactive prototype</li>
+              </ul>
             </div>
           </article>
 
-          <article class="timeline-step">
-            <div class="timeline-num">03</div>
-            <div class="timeline-content">
+          <article class="prc-act" id="build" data-act="03">
+            <div class="prc-act-media">
+              <img class="prc-act-poster" src="assets/cinema/process/build.jpg?v=studio" alt="">
+              <video class="prc-loop" muted playsinline preload="metadata" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/process/build.jpg?v=studio">
+                <source src="assets/cinema/process/build.mp4?v=studio" type="video/mp4">
+              </video>
+              <div class="prc-act-gate"></div>
+            </div>
+            <div class="prc-act-copy">
+              <p class="prc-act-kicker">Act Three</p>
               <h2>Build</h2>
               <p>Our developers bring the approved designs to life with clean, accessible code. We integrate your CMS, set up analytics, and rigorously test across devices, browsers, and assistive technologies.</p>
-              <div class="timeline-meta">
-                <div>
-                  <span>Duration</span>
-                  <p>4–8 weeks</p>
-                </div>
-                <div>
-                  <span>Your involvement</span>
-                  <p>Staging reviews</p>
-                </div>
-                <div>
-                  <span>Outcome</span>
-                  <p>Production-ready site</p>
-                </div>
-              </div>
-              <div class="deliverables-list">
-                <span class="deliverable-tag">CMS setup &amp; configuration</span>
-                <span class="deliverable-tag">Responsive development</span>
-                <span class="deliverable-tag">Accessibility testing</span>
-                <span class="deliverable-tag">Performance optimization</span>
-                <span class="deliverable-tag">Staging environment</span>
-              </div>
+              <dl class="prc-meta">
+                <div><dt>Duration</dt><dd>4–8 weeks</dd></div>
+                <div><dt>Your involvement</dt><dd>Staging reviews</dd></div>
+                <div><dt>Outcome</dt><dd>Production-ready site</dd></div>
+              </dl>
+              <ul class="prc-credits">
+                <li>CMS setup</li>
+                <li>Responsive development</li>
+                <li>Accessibility testing</li>
+                <li>Performance optimization</li>
+                <li>Staging environment</li>
+              </ul>
             </div>
           </article>
 
-          <article class="timeline-step">
-            <div class="timeline-num">04</div>
-            <div class="timeline-content">
+          <article class="prc-act" id="launch" data-act="04">
+            <div class="prc-act-media">
+              <img class="prc-act-poster" src="assets/cinema/process/launch.jpg?v=studio" alt="">
+              <video class="prc-loop" muted playsinline preload="metadata" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/process/launch.jpg?v=studio">
+                <source src="assets/cinema/process/launch.mp4?v=studio" type="video/mp4">
+              </video>
+              <div class="prc-act-gate"></div>
+            </div>
+            <div class="prc-act-copy">
+              <p class="prc-act-kicker">Act Four</p>
               <h2>Launch &amp; Support</h2>
               <p>We manage deployment, DNS configuration, and post-launch monitoring. Your team receives training and documentation, with optional maintenance plans to keep everything running smoothly long-term.</p>
-              <div class="timeline-meta">
-                <div>
-                  <span>Duration</span>
-                  <p>1–2 weeks</p>
-                </div>
-                <div>
-                  <span>Your involvement</span>
-                  <p>Final approval &amp; training</p>
-                </div>
-                <div>
-                  <span>Outcome</span>
-                  <p>Live site + handoff docs</p>
-                </div>
-              </div>
-              <div class="deliverables-list">
-                <span class="deliverable-tag">Launch checklist</span>
-                <span class="deliverable-tag">Team training session</span>
-                <span class="deliverable-tag">Admin documentation</span>
-                <span class="deliverable-tag">30-day post-launch support</span>
-                <span class="deliverable-tag">Maintenance plan options</span>
-              </div>
+              <dl class="prc-meta">
+                <div><dt>Duration</dt><dd>1–2 weeks</dd></div>
+                <div><dt>Your involvement</dt><dd>Final approval &amp; training</dd></div>
+                <div><dt>Outcome</dt><dd>Live site + handoff docs</dd></div>
+              </dl>
+              <ul class="prc-credits">
+                <li>Launch checklist</li>
+                <li>Team training</li>
+                <li>Admin documentation</li>
+                <li>30-day support</li>
+                <li>Maintenance plans</li>
+              </ul>
             </div>
           </article>
 
@@ -167,30 +173,28 @@
       </div>
     </section>
 
-    <section class="page-content alt-bg">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-eyebrow">Communication</p>
-          <h2 class="section-title">How we keep you in the loop</h2>
-        </div>
-        <div class="detail-grid cols-3">
-          <div class="detail-card">
-            <h3>Weekly status updates</h3>
-            <p>Written progress reports every Friday covering completed work, upcoming milestones, and any blockers that need your input.</p>
-          </div>
-          <div class="detail-card">
-            <h3>Shared project portal</h3>
-            <p>All deliverables, feedback, and approvals live in one place. No hunting through email threads for the latest file version.</p>
-          </div>
-          <div class="detail-card">
-            <h3>Scheduled check-ins</h3>
-            <p>Bi-weekly video calls to review progress, discuss feedback, and align on priorities. Ad-hoc calls available when needed.</p>
-          </div>
-        </div>
+    <section class="prc-titles" aria-label="How we communicate">
+      <div class="container prc-titles-inner">
+        <p class="prc-titles-kicker">Communication</p>
+        <h2>How we keep you in the loop</h2>
+        <ul class="prc-cast">
+          <li>
+            <span class="prc-cast-name">Weekly status updates</span>
+            <span class="prc-cast-role">Friday reports — work done, next cut, blockers</span>
+          </li>
+          <li>
+            <span class="prc-cast-name">Shared project portal</span>
+            <span class="prc-cast-role">Deliverables, feedback, and approvals in one place</span>
+          </li>
+          <li>
+            <span class="prc-cast-name">Scheduled check-ins</span>
+            <span class="prc-cast-role">Bi-weekly reviews, plus ad-hoc calls when needed</span>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <section class="page-content faq-section">
+    <section class="page-content faq-section prc-faq">
       <div class="container faq-layout">
         <div class="section-header faq-intro">
           <p class="section-eyebrow">FAQ</p>
@@ -227,11 +231,6 @@
             <p class="faq-a">Every project includes 30 days of post-launch support. After that, most clients move to one of our maintenance plans for ongoing care and updates.</p>
           </details>
         </div>
-      </div>
-    </section>
-
-    <section class="page-content">
-      <div class="container">
         <div class="cta-banner">
           <h2>Ready to get started?</h2>
           <p>Book a discovery call and we'll walk you through how this process applies to your specific project.</p>
@@ -245,7 +244,7 @@
   <div id="site-footer"></div>
 
   <script src="js/layout.js"></script>
-  <script src="js/rain-cinema.js"></script>
+  <script src="js/process-cinema.js?v=2"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,384 @@
+/* ============================================
+   Contact cinema — end titles and call sheet
+   ============================================ */
+
+body.has-ctc-cinema {
+  background: #050506;
+  color: #f3eee6;
+}
+
+body.has-ctc-cinema .page-hero-bg,
+body.has-ctc-cinema .hero-bg,
+body.has-ctc-cinema .hero-grid,
+body.has-ctc-cinema .hero-glow {
+  display: none !important;
+}
+
+.ctc-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  color: #f6f1e8;
+}
+
+.ctc-hero-stage {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: #000;
+}
+
+.ctc-hero-bloom {
+  position: absolute;
+  inset: -16%;
+  background: center / cover no-repeat url('../assets/cinema/contact/hero.jpg?v=studio');
+  filter: blur(48px) saturate(1.2) brightness(0.42);
+  opacity: 0.85;
+}
+
+.ctc-hero-stage.is-live .ctc-hero-bloom {
+  opacity: 0;
+}
+
+.ctc-hero-loop,
+.ctc-hero-stage .ctc-seam {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 48% 42%;
+  opacity: 0;
+  transform: scale(1.08);
+  filter: saturate(1.08) contrast(1.08) brightness(0.9);
+  transition: opacity 0.5s ease;
+}
+
+.ctc-hero-stage.is-live .ctc-hero-loop.is-seam-live,
+.ctc-hero-stage.is-live .ctc-seam.is-seam-live {
+  opacity: 1;
+}
+
+.ctc-hero-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.62) 0%, rgba(0, 0, 0, 0.18) 48%, rgba(0, 0, 0, 0.22) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.28) 0%, transparent 36%, rgba(0, 0, 0, 0.72) 100%);
+}
+
+.ctc-hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 72% 68% at 50% 46%, transparent 22%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+.ctc-bars {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: clamp(26px, 6vh, 64px);
+  background: #000;
+  z-index: 2;
+}
+
+.ctc-bars-top { top: 0; }
+.ctc-bars-bot { bottom: 0; }
+
+.ctc-hero-copy {
+  position: relative;
+  z-index: 3;
+  padding: 0 0 clamp(4.5rem, 10vh, 7rem);
+  max-width: min(42rem, 92vw);
+}
+
+.ctc-hero .section-eyebrow,
+.ctc-kicker {
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  color: rgba(237, 210, 150, 0.86);
+}
+
+.ctc-hero .section-title {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-weight: 500;
+  font-size: clamp(2.6rem, 6vw, 5.1rem);
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+  color: #f7f2ea;
+  max-width: 12ch;
+  text-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.ctc-hero .section-desc {
+  margin-top: 1.1rem;
+  max-width: 34rem;
+  color: rgba(243, 238, 230, 0.78);
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.ctc-hero-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 1.6rem;
+  color: rgba(243, 238, 230, 0.62);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.ctc-hero-cue::before {
+  content: "";
+  width: 1px;
+  height: 2.4rem;
+  background: linear-gradient(180deg, rgba(237, 210, 150, 0.9), transparent);
+}
+
+.ctc-sheet {
+  position: relative;
+  z-index: 3;
+  background: #070708;
+  padding: clamp(4.5rem, 10vh, 7.5rem) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ctc-sheet-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: start;
+}
+
+.ctc-sheet h2,
+body.has-ctc-cinema .section-title,
+body.has-ctc-cinema .faq-q {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  color: #f6f1e8;
+}
+
+.ctc-sheet h2 {
+  font-size: clamp(2rem, 4vw, 3.15rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 0.45rem 0 0.4rem;
+}
+
+.ctc-cast {
+  list-style: none;
+  margin: 1.8rem 0 0;
+  padding: 1.2rem 0 0;
+  border-top: 1px solid rgba(237, 210, 150, 0.22);
+}
+
+.ctc-cast li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.05rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ctc-cast-role {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(237, 210, 150, 0.78);
+}
+
+.ctc-cast-name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.55rem;
+  color: #f6f1e8;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+a.ctc-cast-name:hover,
+a.ctc-cast-name:focus-visible {
+  color: rgba(237, 210, 150, 0.95);
+}
+
+.ctc-note {
+  margin-top: 1.25rem;
+  color: rgba(243, 238, 230, 0.62);
+  font-size: 0.92rem;
+  max-width: 28rem;
+}
+
+.ctc-kicker-late {
+  margin-top: 2.6rem;
+}
+
+.ctc-credits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+
+.ctc-credits li {
+  margin: 0;
+  padding: 0.15rem 0 0.15rem 0;
+  color: rgba(237, 210, 150, 0.88);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+body.has-ctc-cinema.has-circuit .contact-form,
+body.has-ctc-cinema .ctc-form {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+.ctc-log {
+  margin: 1.8rem 0 0;
+  padding: 0.35rem 0 0;
+  border-top: 1px solid rgba(237, 210, 150, 0.22);
+}
+
+.ctc-log .form-group {
+  margin: 0;
+}
+
+.ctc-log-row {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, 0.42fr) minmax(0, 1fr);
+  gap: 0.75rem 1.4rem;
+  align-items: center;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ctc-log-block {
+  padding: 1.05rem 0 0.35rem;
+}
+
+.ctc-form .form-group label {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.62rem;
+  color: rgba(237, 210, 150, 0.78);
+  margin: 0;
+}
+
+.ctc-log-block label {
+  display: block;
+  margin-bottom: 0.7rem;
+}
+
+.ctc-form .form-group input,
+.ctc-form .form-group select,
+.ctc-form .form-group textarea {
+  width: 100%;
+  background: transparent;
+  background-image: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: #f6f1e8;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+  padding: 0.15rem 0;
+}
+
+.ctc-form .form-group textarea {
+  display: block;
+  min-height: 8.5rem;
+  padding: 0.35rem 0 0.35rem 1rem;
+  border-left: 1px solid rgba(237, 210, 150, 0.45);
+  font-size: 1.15rem;
+  line-height: 1.55;
+  resize: vertical;
+}
+
+.ctc-form .form-group input:focus,
+.ctc-form .form-group select:focus,
+.ctc-form .form-group textarea:focus {
+  border-color: rgba(237, 210, 150, 0.7);
+  box-shadow: none;
+  outline: none;
+}
+
+.ctc-form .form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23edd296' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.1rem center;
+  background-size: 12px 12px;
+  padding-right: 1.6rem;
+  cursor: pointer;
+}
+
+.ctc-form option {
+  background: #111;
+  color: #f6f1e8;
+}
+
+.ctc-form .btn-primary {
+  margin-top: 1.5rem;
+  width: auto;
+}
+
+body.has-ctc-cinema .ctc-faq,
+body.has-ctc-cinema .page-content {
+  background: #070708;
+}
+
+body.has-ctc-cinema .faq-a,
+body.has-ctc-cinema .section-desc {
+  color: rgba(243, 238, 230, 0.7);
+}
+
+.ctc-hero-loop::-webkit-media-controls,
+.ctc-hero-loop::-webkit-media-controls-start-playback-button,
+.ctc-hero-loop::-webkit-media-controls-overlay-play-button,
+.ctc-seam::-webkit-media-controls,
+.ctc-seam::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+@media (max-width: 900px) {
+  .ctc-sheet-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ctc-hero .section-title {
+    max-width: none;
+  }
+
+  .ctc-log-row {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ctc-hero-loop,
+  .ctc-seam {
+    display: none;
+  }
+
+  .ctc-hero-bloom {
+    opacity: 1 !important;
+  }
+}

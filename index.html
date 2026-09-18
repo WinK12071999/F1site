@@ -20,9 +20,7 @@
   <link rel="stylesheet" href="css/cinematic-intro.css">
   <link rel="stylesheet" href="css/circuit-journey.css">
   <link rel="stylesheet" href="css/rain-cinema.css">
-  <link rel="preload" as="image" href="assets/cinema/ferrari-rain-wide.jpg">
-  <link rel="preload" as="image" href="assets/cinema/ferrari-rain.jpg">
-  <link rel="preload" as="video" href="assets/cinema/ferrari-rain-drive.mp4" type="video/mp4">
+  <link rel="preload" as="video" href="assets/cinema/atelier-loop.mp4?v=studio" type="video/mp4">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="logos/favicon-48.png">
   <link rel="icon" type="image/png" sizes="192x192" href="logos/favicon-192.png">
@@ -41,19 +39,21 @@
 <body data-page="home" class="has-cinema has-circuit">
 
   <div class="rain-cinema" aria-hidden="true">
+    <div class="rain-bars rain-bars-top"></div>
     <div class="rain-bloom"></div>
     <div class="rain-camera">
-      <picture>
-        <source media="(min-width: 769px)" srcset="assets/cinema/ferrari-rain-wide.jpg">
-        <img class="rain-still" src="assets/cinema/ferrari-rain.jpg" alt="" width="586" height="1024" decoding="async" fetchpriority="high">
-      </picture>
-      <video class="rain-drive" muted autoplay loop playsinline webkit-playsinline preload="auto" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/ferrari-rain-wide.jpg">
-        <source src="assets/cinema/ferrari-rain-drive.mp4" type="video/mp4">
+      <canvas class="rain-paint"></canvas>
+      <video class="rain-drive is-live" muted autoplay playsinline webkit-playsinline preload="auto" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/atelier-loop.jpg?v=studio">
+        <source src="assets/cinema/atelier-loop.mp4?v=studio" type="video/mp4">
+      </video>
+      <video class="rain-drive" muted playsinline webkit-playsinline preload="auto" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/atelier-loop.jpg?v=studio">
+        <source src="assets/cinema/atelier-loop.mp4?v=studio" type="video/mp4">
       </video>
     </div>
     <div class="rain-veil"></div>
     <div class="rain-vignette"></div>
     <div class="rain-grain"></div>
+    <div class="rain-bars rain-bars-bot"></div>
   </div>
 
   <div id="site-header"></div>

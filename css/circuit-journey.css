@@ -31,7 +31,7 @@ body.has-circuit {
 .circuit-ocean-poster {
   position: absolute;
   inset: 0;
-  background: center / cover no-repeat url('../assets/circuit/ocean-poster.jpg');
+  background: #07080a;
   transform: scale(1.02);
   animation: ocean-poster-drift 22s ease-in-out infinite alternate;
   filter: none;

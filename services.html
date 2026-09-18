@@ -15,194 +15,144 @@
   <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/circuit-journey.css">
-  <link rel="stylesheet" href="css/rain-cinema.css">
-  <link rel="preload" as="image" href="assets/cinema/ferrari-rain-wide.jpg">
-  <link rel="preload" as="video" href="assets/cinema/ferrari-rain-drive.mp4" type="video/mp4">
+  <link rel="stylesheet" href="css/services-cinema.css?v=4">
+  <link rel="preload" as="video" href="assets/cinema/services/hero.mp4?v=studio" type="video/mp4">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="logos/favicon-48.png">
   <link rel="icon" type="image/png" sizes="192x192" href="logos/favicon-192.png">
   <link rel="apple-touch-icon" href="logos/apple-touch-icon.png">
 </head>
-<body data-page="services" class="has-cinema has-circuit">
+<body data-page="services" class="has-circuit has-svc-cinema">
 
   <div id="site-header"></div>
 
   <main>
 
-    <section class="page-hero">
-      <div class="page-hero-bg"></div>
-      <div class="container">
+    <section class="svc-hero" aria-label="Services title">
+      <div class="svc-hero-stage">
+        <div class="svc-bars svc-bars-top"></div>
+        <div class="svc-hero-bloom"></div>
+        <video class="svc-hero-loop" muted autoplay playsinline webkit-playsinline preload="auto" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/services/hero.jpg?v=studio">
+          <source src="assets/cinema/services/hero.mp4?v=studio" type="video/mp4">
+        </video>
+        <div class="svc-hero-veil"></div>
+        <div class="svc-hero-vignette"></div>
+        <div class="svc-bars svc-bars-bot"></div>
+      </div>
+      <div class="container svc-hero-copy">
         <p class="section-eyebrow">What We Do</p>
         <h1 class="section-title">Services built for organizations at scale</h1>
         <p class="section-desc">
-          We deliver end-to-end digital solutions — from strategy and design through development, launch, and long-term care. Every engagement is scoped to your organization's goals, compliance requirements, and internal workflows.
+          Three crafts, one studio. Web, identity, and long-term care — directed like a picture, delivered like an operation.
         </p>
+        <a class="svc-hero-cue" href="#reel">Roll picture</a>
       </div>
     </section>
 
-    <section class="page-content" id="web-design">
-      <div class="container">
-        <article class="service-detail">
-          <div class="service-detail-header">
-            <div class="service-detail-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+    <section class="svc-strip" id="reel" aria-label="Service chapters">
+      <div class="svc-strip-pin">
+        <div class="svc-sprocket svc-sprocket--l" aria-hidden="true"></div>
+        <div class="svc-sprocket svc-sprocket--r" aria-hidden="true"></div>
+        <div class="svc-cut" aria-hidden="true"></div>
+        <p class="svc-tc" aria-hidden="true"><span data-svc-tc>01:00:00:00</span></p>
+        <p class="svc-act-mark" aria-hidden="true"><span data-svc-act>01</span> / 03</p>
+        <div class="svc-track">
+
+          <article class="svc-act is-on" id="web-design" data-act="01">
+            <div class="svc-act-media">
+              <img class="svc-act-poster" src="assets/cinema/services/web.jpg?v=studio" alt="">
+              <video class="svc-loop" muted playsinline preload="metadata" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/services/web.jpg?v=studio">
+                <source src="assets/cinema/services/web.mp4?v=studio" type="video/mp4">
+              </video>
+              <div class="svc-act-gate"></div>
             </div>
-            <div>
+            <div class="svc-act-copy">
+              <p class="svc-act-kicker">Craft One</p>
               <h2>Web Design &amp; Development</h2>
-              <p>We build custom websites that represent your organization with precision and purpose. Every site is engineered for speed, accessibility, and ease of management — whether you're launching a corporate portal, a nonprofit campaign site, or a multi-department intranet.</p>
-            </div>
-          </div>
-          <div class="detail-grid cols-3">
-            <div class="detail-card">
-              <h3>Strategy &amp; UX</h3>
-              <p>User research, information architecture, and wireframing aligned to your audience and business objectives.</p>
-              <ul>
-                <li>Stakeholder workshops</li>
-                <li>User journey mapping</li>
-                <li>Content strategy</li>
+              <p>We build custom websites that represent your organization with precision and purpose — engineered for speed, accessibility, and ease of management.</p>
+              <ul class="svc-credits">
+                <li>Strategy &amp; UX</li>
+                <li>Visual Design</li>
+                <li>Development</li>
               </ul>
             </div>
-            <div class="detail-card">
-              <h3>Visual Design</h3>
-              <p>High-fidelity mockups and design systems that ensure consistency across every page and component.</p>
-              <ul>
-                <li>Responsive layouts</li>
-                <li>Component libraries</li>
-                <li>Brand integration</li>
-              </ul>
-            </div>
-            <div class="detail-card">
-              <h3>Development</h3>
-              <p>Clean, standards-compliant code with CMS integration, analytics, and performance optimization built in.</p>
-              <ul>
-                <li>WordPress, Webflow, custom</li>
-                <li>WCAG 2.1 AA compliance</li>
-                <li>SEO fundamentals</li>
-              </ul>
-            </div>
-          </div>
-        </article>
+          </article>
 
-        <article class="service-detail" id="graphic-design">
-          <div class="service-detail-header">
-            <div class="service-detail-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          <article class="svc-act" id="graphic-design" data-act="02">
+            <div class="svc-act-media">
+              <img class="svc-act-poster" src="assets/cinema/services/print.jpg?v=studio" alt="">
+              <video class="svc-loop" muted playsinline preload="metadata" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/services/print.jpg?v=studio">
+                <source src="assets/cinema/services/print.mp4?v=studio" type="video/mp4">
+              </video>
+              <div class="svc-act-gate"></div>
             </div>
-            <div>
+            <div class="svc-act-copy">
+              <p class="svc-act-kicker">Craft Two</p>
               <h2>Graphic Design</h2>
-              <p>Your visual identity is often the first impression stakeholders have of your organization. We create cohesive brand systems and marketing materials that communicate credibility, clarity, and professionalism across print and digital channels.</p>
-            </div>
-          </div>
-          <div class="detail-grid cols-3">
-            <div class="detail-card">
-              <h3>Brand Identity</h3>
-              <p>Logos, color palettes, typography, and brand guidelines that give your team a single source of truth.</p>
-              <ul>
-                <li>Logo design &amp; variations</li>
-                <li>Brand style guides</li>
-                <li>Asset libraries</li>
+              <p>Your visual identity is often the first impression. We build brand systems and materials that carry credibility across print and digital.</p>
+              <ul class="svc-credits">
+                <li>Brand Identity</li>
+                <li>Collateral</li>
+                <li>Digital Graphics</li>
               </ul>
             </div>
-            <div class="detail-card">
-              <h3>Marketing Collateral</h3>
-              <p>Brochures, annual reports, presentations, and event materials designed for high-stakes communications.</p>
-              <ul>
-                <li>Print &amp; digital formats</li>
-                <li>Template systems</li>
-                <li>Multi-language support</li>
-              </ul>
-            </div>
-            <div class="detail-card">
-              <h3>Digital Graphics</h3>
-              <p>Social media templates, email banners, infographics, and web graphics that extend your brand online.</p>
-              <ul>
-                <li>Social media kits</li>
-                <li>Infographics &amp; data viz</li>
-                <li>Ad creative</li>
-              </ul>
-            </div>
-          </div>
-        </article>
+          </article>
 
-        <article class="service-detail" id="maintenance">
-          <div class="service-detail-header">
-            <div class="service-detail-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <article class="svc-act" id="maintenance" data-act="03">
+            <div class="svc-act-media">
+              <img class="svc-act-poster" src="assets/cinema/services/care.jpg?v=studio" alt="">
+              <video class="svc-loop" muted playsinline preload="metadata" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/services/care.jpg?v=studio">
+                <source src="assets/cinema/services/care.mp4?v=studio" type="video/mp4">
+              </video>
+              <div class="svc-act-gate"></div>
             </div>
-            <div>
+            <div class="svc-act-copy">
+              <p class="svc-act-kicker">Craft Three</p>
               <h2>Website Maintenance</h2>
-              <p>A website is never truly finished. We provide ongoing care for existing sites — handling updates, security, performance, and content changes so your team can focus on mission-critical work instead of technical firefighting.</p>
+              <p>A website is never finished. We keep it secure, current, and fast so your team can stay on the work that matters.</p>
+              <ul class="svc-credits">
+                <li>Security</li>
+                <li>Content</li>
+                <li>Performance</li>
+              </ul>
             </div>
-          </div>
-          <div class="detail-grid cols-3">
-            <div class="detail-card">
-              <h3>Security &amp; Backups</h3>
-              <p>Regular security patches, malware monitoring, SSL management, and automated daily backups with restore capability.</p>
-            </div>
-            <div class="detail-card">
-              <h3>Content Management</h3>
-              <p>Fast turnaround on content updates, new pages, image swaps, and form changes — with change logs for accountability.</p>
-            </div>
-            <div class="detail-card">
-              <h3>Performance &amp; Reporting</h3>
-              <p>Uptime monitoring, speed optimization, monthly analytics reports, and proactive recommendations for improvement.</p>
-            </div>
-          </div>
-        </article>
+          </article>
+
+        </div>
       </div>
     </section>
 
-    <section class="page-content alt-bg">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-eyebrow">Maintenance Plans</p>
-          <h2 class="section-title">Ongoing support that fits your needs</h2>
-          <p class="section-desc">Flexible maintenance packages for organizations that need reliable, responsive website care.</p>
-        </div>
-        <div class="plan-grid">
-          <div class="plan-card">
-            <p class="plan-label">Essential</p>
-            <h3>Core Care</h3>
-            <p class="plan-price">$499 <span>/ month</span></p>
-            <p>Foundational maintenance for smaller sites with predictable update needs.</p>
-            <ul>
-              <li>Monthly security updates</li>
-              <li>Daily automated backups</li>
-              <li>Up to 2 hours of content updates</li>
-              <li>Uptime monitoring</li>
-              <li>Email support (48hr response)</li>
-            </ul>
-          </div>
-          <div class="plan-card featured">
-            <p class="plan-label">Most Popular</p>
-            <h3>Professional</h3>
-            <p class="plan-price">$999 <span>/ month</span></p>
-            <p>Comprehensive care for active organizational websites with regular content changes.</p>
-            <ul>
-              <li>Weekly security &amp; plugin updates</li>
-              <li>Up to 6 hours of content updates</li>
-              <li>Performance optimization</li>
-              <li>Monthly analytics report</li>
-              <li>Priority support (24hr response)</li>
-            </ul>
-          </div>
-          <div class="plan-card">
-            <p class="plan-label">Enterprise</p>
-            <h3>Full Partnership</h3>
-            <p class="plan-price">Custom</p>
-            <p>Dedicated support for large portals, multi-site networks, and high-traffic platforms.</p>
-            <ul>
-              <li>Dedicated account manager</li>
-              <li>Unlimited priority support</li>
-              <li>Custom SLA agreements</li>
-              <li>Quarterly strategy reviews</li>
-              <li>Development hours included</li>
-            </ul>
-          </div>
-        </div>
+    <section class="svc-titles" aria-label="Maintenance plans">
+      <div class="container svc-titles-inner">
+        <p class="svc-titles-kicker">Care plans</p>
+        <h2>Ongoing support that fits your needs</h2>
+        <p>Flexible maintenance packages for organizations that need reliable, responsive website care.</p>
+        <ul class="svc-cast">
+          <li>
+            <span class="svc-cast-name">Core Care · $499 / month</span>
+            <span class="svc-cast-role">Essential</span>
+          </li>
+          <li>
+            <span class="svc-cast-line">Monthly security updates · Daily backups · Up to 2 hours of content · Uptime monitoring · Email support</span>
+          </li>
+          <li>
+            <span class="svc-cast-name">Professional · $999 / month</span>
+            <span class="svc-cast-role">Most Popular</span>
+          </li>
+          <li>
+            <span class="svc-cast-line">Weekly security &amp; plugin updates · Up to 6 hours of content · Performance · Monthly analytics · Priority support</span>
+          </li>
+          <li>
+            <span class="svc-cast-name">Full Partnership · Custom</span>
+            <span class="svc-cast-role">Enterprise</span>
+          </li>
+          <li>
+            <span class="svc-cast-line">Dedicated account manager · Unlimited priority support · Custom SLA · Quarterly strategy · Development hours</span>
+          </li>
+        </ul>
         <div class="cta-banner">
           <h2>Not sure which service fits?</h2>
           <p>Tell us about your project and we'll recommend the right approach — no obligation.</p>
@@ -256,7 +206,7 @@
   <div id="site-footer"></div>
 
   <script src="js/layout.js"></script>
-  <script src="js/rain-cinema.js"></script>
+  <script src="js/services-cinema.js?v=4"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

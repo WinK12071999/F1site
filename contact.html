@@ -15,117 +15,106 @@
   <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/circuit-journey.css">
-  <link rel="stylesheet" href="css/rain-cinema.css">
-  <link rel="preload" as="image" href="assets/cinema/ferrari-rain-wide.jpg">
-  <link rel="preload" as="video" href="assets/cinema/ferrari-rain-drive.mp4" type="video/mp4">
+  <link rel="stylesheet" href="css/contact-cinema.css?v=2">
+  <link rel="preload" as="video" href="assets/cinema/contact/hero.mp4?v=studio" type="video/mp4">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="logos/favicon-48.png">
   <link rel="icon" type="image/png" sizes="192x192" href="logos/favicon-192.png">
   <link rel="apple-touch-icon" href="logos/apple-touch-icon.png">
 </head>
-<body data-page="contact" class="has-cinema has-circuit">
+<body data-page="contact" class="has-circuit has-ctc-cinema">
 
   <div id="site-header"></div>
 
   <main>
 
-    <section class="page-hero">
-      <div class="page-hero-bg"></div>
-      <div class="container">
+    <section class="ctc-hero" aria-label="Contact title">
+      <div class="ctc-hero-stage">
+        <div class="ctc-bars ctc-bars-top"></div>
+        <div class="ctc-hero-bloom"></div>
+        <video class="ctc-hero-loop" muted autoplay playsinline webkit-playsinline preload="auto" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="assets/cinema/contact/hero.jpg?v=studio">
+          <source src="assets/cinema/contact/hero.mp4?v=studio" type="video/mp4">
+        </video>
+        <div class="ctc-hero-veil"></div>
+        <div class="ctc-hero-vignette"></div>
+        <div class="ctc-bars ctc-bars-bot"></div>
+      </div>
+      <div class="container ctc-hero-copy">
         <p class="section-eyebrow">Get in Touch</p>
         <h1 class="section-title">Let's build something remarkable</h1>
         <p class="section-desc">
-          Tell us about your project, timeline, and goals. We respond to every inquiry within one business day with clear next steps — whether that's a discovery call, a proposal, or honest guidance on the best path forward.
+          Tell us about your project, timeline, and goals. We respond within one business day — a discovery call, a proposal, or honest guidance on the best path forward.
         </p>
+        <a class="ctc-hero-cue" href="#call-sheet">The call sheet</a>
       </div>
     </section>
 
-    <section class="page-content">
-      <div class="container">
-        <div class="contact-info-grid">
-          <div class="contact-info-card">
-            <h3>Email</h3>
-            <p><a href="mailto:projects@f1site.com">projects@f1site.com</a></p>
-            <p style="margin-top:0.5rem">For project inquiries, partnerships, and general questions.</p>
-          </div>
-          <div class="contact-info-card">
-            <h3>Phone</h3>
-            <p><a href="tel:+16138059710">+1 613-805-9710</a></p>
-            <p style="margin-top:0.5rem">24/7</p>
-          </div>
-          <div class="contact-info-card">
-            <h3>Location</h3>
-            <p>Ottawa, Ontario, Canada</p>
-            <p style="margin-top:0.5rem">Serving clients remotely across Canada and internationally.</p>
-          </div>
+    <section class="ctc-sheet" id="call-sheet" aria-label="How to reach us">
+      <div class="container ctc-sheet-grid">
+        <div class="ctc-sheet-col">
+          <p class="ctc-kicker">Call sheet</p>
+          <h2>Reach the studio</h2>
+          <ul class="ctc-cast">
+            <li>
+              <span class="ctc-cast-role">Email</span>
+              <a class="ctc-cast-name" href="mailto:projects@f1site.com">projects@f1site.com</a>
+            </li>
+            <li>
+              <span class="ctc-cast-role">Phone</span>
+              <a class="ctc-cast-name" href="tel:+13434626045">+1 343-462-6045</a>
+            </li>
+            <li>
+              <span class="ctc-cast-role">Based</span>
+              <span class="ctc-cast-name">Worldwide</span>
+            </li>
+          </ul>
+          <p class="ctc-note">24/7. Serving clients worldwide.</p>
+
+          <p class="ctc-kicker ctc-kicker-late">What to send</p>
+          <ul class="ctc-credits">
+            <li>A brief on your organization</li>
+            <li>The service you need</li>
+            <li>Timeline and budget range</li>
+            <li>Current site or brand assets</li>
+            <li>Challenges and requirements</li>
+          </ul>
         </div>
 
-        <div class="contact-grid">
-          <div class="contact-info">
-            <h2 class="section-title" style="font-size:1.375rem">What to include in your message</h2>
-            <p class="contact-desc">
-              The more context you provide, the faster we can assess fit and prepare a useful response. Helpful details include:
-            </p>
-            <ul class="about-features">
-              <li>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-                A brief description of your organization
-              </li>
-              <li>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-                The service you're interested in
-              </li>
-              <li>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-                Your ideal timeline and budget range
-              </li>
-              <li>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-                Links to your current site or brand assets
-              </li>
-              <li>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-                Any specific challenges or requirements
-              </li>
-            </ul>
-          </div>
-
-          <form class="contact-form" id="contactForm" action="https://formsubmit.co/projects@f1site.com" method="POST" novalidate>
-            <input type="hidden" name="_subject" value="New project inquiry — F1site">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" required placeholder="Jane Smith" autocomplete="name">
-              </div>
-              <div class="form-group">
-                <label for="organization">Organization</label>
-                <input type="text" id="organization" name="organization" placeholder="Your Company" autocomplete="organization">
-              </div>
+        <form class="contact-form ctc-form" id="contactForm" action="https://formsubmit.co/projects@f1site.com" method="POST" novalidate>
+          <p class="ctc-kicker">Your scene</p>
+          <h2>Write us in</h2>
+          <input type="hidden" name="_subject" value="New project inquiry — F1site">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="ctc-log">
+            <div class="form-group ctc-log-row">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Jane Smith" autocomplete="name">
             </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required placeholder="jane@company.com" autocomplete="email">
-              </div>
-              <div class="form-group">
-                <label for="service">Service Needed</label>
-                <select id="service" name="service">
-                  <option value="">Select a service</option>
-                  <option value="web-design">Web Design &amp; Development</option>
-                  <option value="graphic-design">Graphic Design</option>
-                  <option value="maintenance">Website Maintenance</option>
-                  <option value="multiple">Multiple Services</option>
-                </select>
-              </div>
+            <div class="form-group ctc-log-row">
+              <label for="organization">Organization</label>
+              <input type="text" id="organization" name="organization" placeholder="Your Company" autocomplete="organization">
             </div>
-            <div class="form-group">
-              <label for="budget">Estimated Budget</label>
+            <div class="form-group ctc-log-row">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="jane@company.com" autocomplete="email">
+            </div>
+            <div class="form-group ctc-log-row">
+              <label for="service">Service</label>
+              <select id="service" name="service">
+                <option value="">Select a service</option>
+                <option value="web-design">Web Design &amp; Development</option>
+                <option value="graphic-design">Graphic Design</option>
+                <option value="maintenance">Website Maintenance</option>
+                <option value="multiple">Multiple Services</option>
+              </select>
+            </div>
+            <div class="form-group ctc-log-row">
+              <label for="budget">Budget</label>
               <select id="budget" name="budget">
                 <option value="">Select a range</option>
                 <option value="under-10k">Under $10,000</option>
@@ -135,19 +124,19 @@
                 <option value="ongoing">Ongoing maintenance</option>
               </select>
             </div>
-            <div class="form-group">
-              <label for="message">Project Details</label>
+            <div class="form-group ctc-log-block">
+              <label for="message">The story</label>
               <textarea id="message" name="message" rows="5" required placeholder="Tell us about your project, timeline, and goals..."></textarea>
             </div>
-            <button type="submit" class="btn btn-primary btn-full" id="formSubmitBtn">Send Message</button>
-            <p class="form-success" id="formSuccess" hidden>Thank you! We'll be in touch within one business day.</p>
-            <p class="form-error" id="formError" hidden>Something went wrong. Please email projects@f1site.com directly.</p>
-          </form>
-        </div>
+          </div>
+          <button type="submit" class="btn btn-primary" id="formSubmitBtn">Send Message</button>
+          <p class="form-success" id="formSuccess" hidden>Thank you! We'll be in touch within one business day.</p>
+          <p class="form-error" id="formError" hidden>Something went wrong. Please email projects@f1site.com directly.</p>
+        </form>
       </div>
     </section>
 
-    <section class="page-content alt-bg faq-section">
+    <section class="page-content faq-section ctc-faq">
       <div class="container faq-layout">
         <div class="section-header faq-intro">
           <p class="section-eyebrow">FAQ</p>
@@ -186,9 +175,9 @@
           <details class="faq-item">
             <summary>
               <span class="faq-index" aria-hidden="true"></span>
-              <span class="faq-q">Do you work with clients outside Canada?</span>
+              <span class="faq-q">Do you work with clients worldwide?</span>
             </summary>
-            <p class="faq-a">Yes. While we're based in Ottawa, we work remotely with clients across North America and internationally. All communication is handled via video calls and our project portal.</p>
+            <p class="faq-a">Yes. We're based worldwide. All communication is handled via video calls and our project portal.</p>
           </details>
         </div>
       </div>
@@ -199,7 +188,7 @@
   <div id="site-footer"></div>
 
   <script src="js/layout.js"></script>
-  <script src="js/rain-cinema.js"></script>
+  <script src="js/contact-cinema.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

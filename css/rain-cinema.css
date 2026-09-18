@@ -29,61 +29,55 @@ body.has-cinema::after {
   position: absolute;
   inset: -18%;
   background:
-    center / cover no-repeat url('../assets/cinema/ferrari-rain.jpg');
+    center / cover no-repeat url('../assets/cinema/atelier-loop.jpg?v=studio');
   filter: blur(52px) saturate(1.35) brightness(0.38);
   transform: scale(1.08);
   opacity: 0.9;
 }
 
-@media (min-width: 769px) {
-  .rain-bloom {
-    background-image: url('../assets/cinema/ferrari-rain-wide.jpg');
-  }
-}
-
 .rain-camera {
   position: absolute;
   inset: 0;
-  transform-origin: 58% 62%;
+  transform-origin: 50% 50%;
   will-change: transform;
 }
 
-.rain-camera picture {
+.rain-drive,
+.rain-paint {
   position: absolute;
-  inset: 0;
-  display: block;
-}
-
-@media (min-width: 769px) {
-  .rain-camera {
-    transform-origin: 64% 68%;
-  }
-}
-
-.rain-still {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  left: -6%;
+  top: -8%;
+  width: 112%;
+  height: 118%;
   object-fit: cover;
-  object-position: 50% 58%;
+  object-position: 50% 46%;
   display: block;
-  filter: contrast(1.08) saturate(1.12) brightness(0.92);
-  transition: opacity 0.8s var(--cinema-ease);
-}
-
-.rain-drive {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 55% 62%;
-  display: block;
-  opacity: 1;
   background: #000;
   transform: translateZ(0);
   backface-visibility: hidden;
+  pointer-events: none;
+}
+
+.rain-drive {
+  opacity: 0;
+  transition: opacity 0.48s linear;
+}
+
+.rain-drive.is-live {
+  opacity: 1;
+}
+
+.rain-paint {
+  opacity: 0;
+  z-index: 1;
+}
+
+.rain-cinema.has-paint .rain-drive {
+  opacity: 0 !important;
+}
+
+.rain-cinema.has-paint .rain-paint {
+  opacity: 1;
 }
 
 .rain-drive::-webkit-media-controls,
@@ -95,32 +89,35 @@ body.has-cinema::after {
   pointer-events: none !important;
 }
 
-.rain-cinema.is-driving .rain-still,
-.rain-cinema.is-driving .rain-camera picture {
-  opacity: 0;
-}
-
 .rain-cinema.is-driving .rain-bloom {
   visibility: hidden;
   opacity: 0;
 }
 
-@media (min-width: 769px) {
-  .rain-still {
-    object-position: 62% 72%;
-  }
+.rain-bars {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: clamp(28px, 6.5vh, 72px);
+  background: #000;
+  z-index: 5;
+  pointer-events: none;
+}
 
-  .rain-drive {
-    object-position: 58% 68%;
-  }
+.rain-bars-top {
+  top: 0;
+}
+
+.rain-bars-bot {
+  bottom: 0;
 }
 
 .rain-veil {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.28) 38%, rgba(0, 0, 0, 0.08) 62%, rgba(0, 0, 0, 0.35) 100%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, transparent 28%, transparent 62%, rgba(0, 0, 0, 0.7) 100%);
+    linear-gradient(90deg, rgba(0, 0, 0, 0.84) 0%, rgba(0, 0, 0, 0.42) 34%, rgba(0, 0, 0, 0.12) 58%, rgba(0, 0, 0, 0.4) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, transparent 28%, transparent 62%, rgba(0, 0, 0, 0.76) 100%);
   pointer-events: none;
 }
 
@@ -235,7 +232,8 @@ html.cin-playing body > .rain-cinema {
     animation: none !important;
   }
 
-  .rain-drive {
+  .rain-drive,
+  .rain-paint {
     display: none;
   }
 }
