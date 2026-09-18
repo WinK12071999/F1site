@@ -15,11 +15,12 @@
   <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Inter:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Inter:wght@400;600&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="/css/styles.css">
-  <link rel="stylesheet" href="/css/circuit-journey.css">
-  <link rel="stylesheet" href="/css/contact-cinema.css?v=fast">
-  <link rel="preload" as="image" href="/assets/cinema/contact/hero.jpg?v=fast" fetchpriority="high">
+  <link rel="stylesheet" href="/css/circuit-journey.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/css/contact-cinema.css?v=thanks">
+  <link rel="preload" as="image" href="/assets/cinema/contact/hero.jpg?v=speed" fetchpriority="high">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="/logos/favicon-48.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/logos/favicon-192.png">
@@ -35,9 +36,9 @@
       <div class="ctc-hero-stage">
         <div class="ctc-bars ctc-bars-top"></div>
         <div class="ctc-hero-bloom"></div>
-        <img class="ctc-hero-still" src="/assets/cinema/contact/hero.jpg?v=fast" alt="" fetchpriority="high" decoding="async">
-        <video class="ctc-hero-loop" muted autoplay playsinline webkit-playsinline preload="metadata" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="/assets/cinema/contact/hero.jpg?v=fast">
-          <source src="/assets/cinema/contact/hero.mp4?v=studio" type="video/mp4">
+        <img class="ctc-hero-still" src="/assets/cinema/contact/hero.jpg?v=speed" alt="" fetchpriority="high" decoding="async">
+        <video class="ctc-hero-loop" muted playsinline webkit-playsinline preload="none" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="/assets/cinema/contact/hero.jpg?v=speed">
+          <source src="/assets/cinema/contact/hero.mp4?v=speed" type="video/mp4">
         </video>
         <div class="ctc-hero-veil"></div>
         <div class="ctc-hero-vignette"></div>
@@ -100,9 +101,12 @@
               <label for="organization">Organization</label>
               <input type="text" id="organization" name="organization" placeholder="Your Company" autocomplete="organization">
             </div>
-            <div class="form-group ctc-log-row">
+            <div class="form-group ctc-log-row" id="emailGroup">
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" required placeholder="jane@company.com" autocomplete="email">
+              <div class="ctc-field">
+                <input type="email" id="email" name="email" required placeholder="jane@company.com" autocomplete="email" aria-describedby="emailError">
+                <p class="field-error" id="emailError" hidden>This email is invalid.</p>
+              </div>
             </div>
             <div class="form-group ctc-log-row">
               <label for="service">Service</label>
@@ -131,7 +135,6 @@
             </div>
           </div>
           <button type="submit" class="btn btn-primary" id="formSubmitBtn">Send Message</button>
-          <p class="form-success" id="formSuccess" hidden>Thank you! We'll be in touch within one business day.</p>
           <p class="form-error" id="formError" hidden>Something went wrong. Please email projects@f1site.com directly.</p>
         </form>
       </div>
@@ -188,8 +191,16 @@
 
   <div id="site-footer"></div>
 
-  <script src="/js/layout.js?v=urls"></script>
-  <script src="/js/contact-cinema.js?v=fast"></script>
-  <script src="/js/main.js"></script>
+  <div class="form-thanks" id="formThanks" hidden role="dialog" aria-modal="true" aria-labelledby="formThanksTitle" aria-live="polite">
+    <div class="form-thanks-card">
+      <p class="form-thanks-kicker">Message received</p>
+      <h2 class="form-thanks-title" id="formThanksTitle">Thank you</h2>
+      <p class="form-thanks-copy">We'll be in touch within one business day.</p>
+    </div>
+  </div>
+
+  <script src="/js/layout.js?v=speed" defer></script>
+  <script src="/js/contact-cinema.js?v=speed" defer></script>
+  <script src="/js/main.js?v=thanks" defer></script>
 </body>
 </html>

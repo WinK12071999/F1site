@@ -32,7 +32,7 @@
       '<div class="logo-visual">' +
         '<span class="logo-motion">' +
           '<span class="logo-tilt">' +
-            '<img src="' + logoPath + '" alt="F1site" class="logo-img logo-img-featured" width="1536" height="1024">' +
+            '<img src="' + logoPath + '" alt="F1site" class="logo-img logo-img-featured" width="720" height="480">' +
           '</span>' +
         '</span>' +
         '<a href="/" class="logo logo-hit-link" aria-label="F1site home"></a>' +
@@ -55,7 +55,7 @@
 
   var footerLogoHtml =
     '<a href="/" class="logo" aria-label="F1site home">' +
-      '<img src="' + logoPath + '" alt="F1site" class="logo-img logo-img-footer" width="1536" height="1024">' +
+      '<img src="' + logoPath + '" alt="F1site" class="logo-img logo-img-footer" width="720" height="480">' +
     '</a>';
 
   var footerHtml =
@@ -116,7 +116,7 @@
         'afterbegin',
         '<div class="hero-mobile-mark" aria-hidden="true">' +
           '<span class="hero-mobile-logo-wrap">' +
-            '<img src="' + logoPath + '" alt="" class="hero-mobile-logo" width="1536" height="1024">' +
+            '<img src="' + logoPath + '" alt="" class="hero-mobile-logo" width="720" height="480">' +
           '</span>' +
         '</div>'
       );

@@ -8,8 +8,8 @@
   if (!body || body.getAttribute('data-page') !== 'home') return;
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var VIDEO_SRC = '/assets/cinema/atelier-loop.mp4?v=studio';
-  var POSTER = '/assets/cinema/atelier-loop.jpg?v=fast';
+  var VIDEO_SRC = '/assets/cinema/atelier-loop.mp4?v=speed';
+  var POSTER = '/assets/cinema/atelier-loop.jpg?v=speed';
   var RATE = 1;
   var FADE_SEC = 0.55;
   var LIVERIES = [
@@ -442,7 +442,17 @@
         if (videos[0].duration && isFinite(videos[0].duration)) duration = videos[0].duration;
       });
       videos[0].addEventListener('canplay', startCinema);
-      if (videos[0].readyState >= 2) startCinema();
+      function armHome() {
+        videos[0].preload = 'auto';
+        startCinema();
+      }
+      if (videos[0].readyState >= 2) {
+        armHome();
+      } else if ('requestIdleCallback' in window) {
+        requestIdleCallback(armHome, { timeout: 1600 });
+      } else {
+        window.setTimeout(armHome, 500);
+      }
     }
 
     if (!reduced) {

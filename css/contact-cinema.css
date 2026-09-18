@@ -319,6 +319,24 @@ body.has-ctc-cinema .ctc-form {
   resize: vertical;
 }
 
+.ctc-field {
+  min-width: 0;
+}
+
+.ctc-form .field-error {
+  margin: 0.4rem 0 0;
+  color: #e24b4b;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+}
+
+.ctc-form .form-group.is-invalid input {
+  box-shadow: inset 0 -1px 0 #e24b4b;
+  caret-color: #e24b4b;
+}
+
 .ctc-form .form-group input:focus,
 .ctc-form .form-group select:focus,
 .ctc-form .form-group textarea:focus {
@@ -347,6 +365,70 @@ body.has-ctc-cinema .ctc-form {
 .ctc-form .btn-primary {
   margin-top: 1.5rem;
   width: auto;
+}
+
+.form-thanks[hidden] {
+  display: none !important;
+}
+
+.form-thanks {
+  position: fixed;
+  inset: 0;
+  z-index: 240;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(4, 4, 5, 0.86);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.form-thanks.is-on {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.form-thanks-card {
+  max-width: 36rem;
+  text-align: center;
+  color: #f6f1e8;
+}
+
+.form-thanks-kicker {
+  margin: 0 0 0.85rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  color: rgba(237, 210, 150, 0.86);
+}
+
+.form-thanks-title {
+  margin: 0;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-weight: 500;
+  font-size: clamp(3.2rem, 9vw, 6.4rem);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+}
+
+.form-thanks-copy {
+  margin: 1.1rem 0 0;
+  color: rgba(243, 238, 230, 0.72);
+  font-size: 1.05rem;
+}
+
+body.form-thanks-open {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form-thanks {
+    transition: none;
+  }
 }
 
 body.has-ctc-cinema .ctc-faq,

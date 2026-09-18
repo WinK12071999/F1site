@@ -13,7 +13,7 @@
     var navLinks = document.getElementById('navLinks');
     var navBackdrop = document.getElementById('navBackdrop');
     var contactForm = document.getElementById('contactForm');
-    var formSuccess = document.getElementById('formSuccess');
+    var formThanks = document.getElementById('formThanks') || document.getElementById('formSuccess');
 
     function setNavOpen(isOpen) {
       if (!navLinks || !navToggle) return;
@@ -59,9 +59,35 @@
       });
     }
 
-    if (contactForm && formSuccess) {
+    if (contactForm && formThanks) {
       var formError = document.getElementById('formError');
       var submitBtn = document.getElementById('formSubmitBtn');
+      var emailInput = contactForm.email;
+      var emailError = document.getElementById('emailError');
+      var emailGroup = document.getElementById('emailGroup') || (emailInput && emailInput.closest('.form-group'));
+      var thanksTimer = 0;
+
+      function isValidEmail(value) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+      }
+
+      function setEmailInvalid(on) {
+        if (emailError) emailError.hidden = !on;
+        if (emailGroup) emailGroup.classList.toggle('is-invalid', on);
+        if (emailInput) emailInput.setAttribute('aria-invalid', on ? 'true' : 'false');
+      }
+
+      if (emailInput) {
+        emailInput.addEventListener('input', function () {
+          if (emailError && !emailError.hidden) {
+            setEmailInvalid(!isValidEmail(emailInput.value.trim()));
+          }
+        });
+        emailInput.addEventListener('blur', function () {
+          var value = emailInput.value.trim();
+          if (value) setEmailInvalid(!isValidEmail(value));
+        });
+      }
 
       contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -70,9 +96,16 @@
         var email = contactForm.email.value.trim();
         var message = contactForm.message.value.trim();
 
-        if (!name || !email || !message) return;
+        if (emailInput) {
+          setEmailInvalid(!isValidEmail(email));
+          if (!isValidEmail(email)) {
+            emailInput.focus();
+            return;
+          }
+        }
 
-        formSuccess.hidden = true;
+        if (!name || !message) return;
+
         if (formError) formError.hidden = true;
         if (submitBtn) {
           submitBtn.disabled = true;
@@ -88,11 +121,8 @@
         })
           .then(function (response) {
             if (!response.ok) throw new Error('Send failed');
-            contactForm.reset();
-            formSuccess.hidden = false;
-            setTimeout(function () {
-              formSuccess.hidden = true;
-            }, 6000);
+            clearContactForm();
+            showThanks();
           })
           .catch(function () {
             if (formError) formError.hidden = false;
@@ -104,6 +134,30 @@
             }
           });
       });
+
+      function clearContactForm() {
+        contactForm.reset();
+        ['name', 'organization', 'email', 'message'].forEach(function (field) {
+          if (contactForm[field]) contactForm[field].value = '';
+        });
+        if (contactForm.service) contactForm.service.selectedIndex = 0;
+        if (contactForm.budget) contactForm.budget.selectedIndex = 0;
+        setEmailInvalid(false);
+      }
+
+      function hideThanks() {
+        formThanks.hidden = true;
+        formThanks.classList.remove('is-on');
+        document.body.classList.remove('form-thanks-open');
+      }
+
+      function showThanks() {
+        formThanks.hidden = false;
+        formThanks.classList.add('is-on');
+        document.body.classList.add('form-thanks-open');
+        window.clearTimeout(thanksTimer);
+        thanksTimer = window.setTimeout(hideThanks, 5000);
+      }
     }
 
     if (motionOK) {
@@ -872,7 +926,7 @@
 
       setTimeout(function () {
         window.location.href = a.href;
-      }, 230);
+      }, 80);
 
       // Safety: if navigation is somehow interrupted, restore the page.
       setTimeout(function () {

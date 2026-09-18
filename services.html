@@ -15,11 +15,12 @@
   <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Inter:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Inter:wght@400;600&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="/css/styles.css">
-  <link rel="stylesheet" href="/css/circuit-journey.css">
-  <link rel="stylesheet" href="/css/services-cinema.css?v=fast">
-  <link rel="preload" as="image" href="/assets/cinema/services/hero.jpg?v=fast" fetchpriority="high">
+  <link rel="stylesheet" href="/css/circuit-journey.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/css/services-cinema.css?v=speed">
+  <link rel="preload" as="image" href="/assets/cinema/services/hero.jpg?v=speed" fetchpriority="high">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="/logos/favicon-48.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/logos/favicon-192.png">
@@ -35,9 +36,9 @@
       <div class="svc-hero-stage">
         <div class="svc-bars svc-bars-top"></div>
         <div class="svc-hero-bloom"></div>
-        <img class="svc-hero-still" src="/assets/cinema/services/hero.jpg?v=fast" alt="" fetchpriority="high" decoding="async">
-        <video class="svc-hero-loop" muted autoplay playsinline webkit-playsinline preload="metadata" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="/assets/cinema/services/hero.jpg?v=fast">
-          <source src="/assets/cinema/services/hero.mp4?v=studio" type="video/mp4">
+        <img class="svc-hero-still" src="/assets/cinema/services/hero.jpg?v=speed" alt="" fetchpriority="high" decoding="async">
+        <video class="svc-hero-loop" muted playsinline webkit-playsinline preload="none" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="/assets/cinema/services/hero.jpg?v=speed">
+          <source src="/assets/cinema/services/hero.mp4?v=speed" type="video/mp4">
         </video>
         <div class="svc-hero-veil"></div>
         <div class="svc-hero-vignette"></div>
@@ -64,9 +65,9 @@
 
           <article class="svc-act is-on" id="web-design" data-act="01">
             <div class="svc-act-media">
-              <img class="svc-act-poster" decoding="async" src="/assets/cinema/services/web.jpg?v=fast" alt="">
-              <video class="svc-loop" muted playsinline preload="none" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="/assets/cinema/services/web.jpg?v=fast">
-                <source src="/assets/cinema/services/web.mp4?v=studio" type="video/mp4">
+              <img class="svc-act-poster" decoding="async" src="/assets/cinema/services/web.jpg?v=speed" alt="">
+              <video class="svc-loop" muted playsinline preload="none" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="/assets/cinema/services/web.jpg?v=speed">
+                <source src="/assets/cinema/services/web.mp4?v=speed" type="video/mp4">
               </video>
               <div class="svc-act-gate"></div>
             </div>
@@ -84,9 +85,9 @@
 
           <article class="svc-act" id="graphic-design" data-act="02">
             <div class="svc-act-media">
-              <img class="svc-act-poster" loading="lazy" decoding="async" src="/assets/cinema/services/print.jpg?v=fast" alt="">
-              <video class="svc-loop" muted playsinline preload="none" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="/assets/cinema/services/print.jpg?v=fast">
-                <source src="/assets/cinema/services/print.mp4?v=studio" type="video/mp4">
+              <img class="svc-act-poster" loading="lazy" decoding="async" src="/assets/cinema/services/print.jpg?v=speed" alt="">
+              <video class="svc-loop" muted playsinline preload="none" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="/assets/cinema/services/print.jpg?v=speed">
+                <source src="/assets/cinema/services/print.mp4?v=speed" type="video/mp4">
               </video>
               <div class="svc-act-gate"></div>
             </div>
@@ -104,9 +105,9 @@
 
           <article class="svc-act" id="maintenance" data-act="03">
             <div class="svc-act-media">
-              <img class="svc-act-poster" loading="lazy" decoding="async" src="/assets/cinema/services/care.jpg?v=fast" alt="">
-              <video class="svc-loop" muted playsinline preload="none" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="/assets/cinema/services/care.jpg?v=fast">
-                <source src="/assets/cinema/services/care.mp4?v=studio" type="video/mp4">
+              <img class="svc-act-poster" loading="lazy" decoding="async" src="/assets/cinema/services/care.jpg?v=speed" alt="">
+              <video class="svc-loop" muted playsinline preload="none" disablePictureInPicture controlslist="nodownload nofullscreen noremoteplayback" poster="/assets/cinema/services/care.jpg?v=speed">
+                <source src="/assets/cinema/services/care.mp4?v=speed" type="video/mp4">
               </video>
               <div class="svc-act-gate"></div>
             </div>
@@ -206,8 +207,8 @@
 
   <div id="site-footer"></div>
 
-  <script src="/js/layout.js?v=urls"></script>
-  <script src="/js/services-cinema.js?v=fast"></script>
-  <script src="/js/main.js"></script>
+  <script src="/js/layout.js?v=speed" defer></script>
+  <script src="/js/services-cinema.js?v=speed" defer></script>
+  <script src="/js/main.js?v=speed" defer></script>
 </body>
 </html>
