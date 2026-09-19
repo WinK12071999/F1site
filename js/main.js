@@ -65,6 +65,8 @@
       var emailInput = contactForm.email;
       var emailError = document.getElementById('emailError');
       var emailGroup = document.getElementById('emailGroup') || (emailInput && emailInput.closest('.form-group'));
+      var nextInput = document.getElementById('formNext');
+      var autoInput = document.getElementById('formAutoresponse');
       var thanksTimer = 0;
 
       function isValidEmail(value) {
@@ -75,6 +77,32 @@
         if (emailError) emailError.hidden = !on;
         if (emailGroup) emailGroup.classList.toggle('is-invalid', on);
         if (emailInput) emailInput.setAttribute('aria-invalid', on ? 'true' : 'false');
+      }
+
+      function thankYouCopy(name) {
+        return [
+          'Thank you for reaching out, ' + name + '.',
+          '',
+          "We've received your message at F1site and will be in touch as soon as possible.",
+          '',
+          'If you need us sooner, email projects@f1site.com or call +1 343-462-6045.',
+          '',
+          '— The F1site studio'
+        ].join('\n');
+      }
+
+      function consumeSentFlag() {
+        try {
+          var params = new URLSearchParams(window.location.search);
+          if (params.get('sent') !== '1') return false;
+          params.delete('sent');
+          var query = params.toString();
+          var next = window.location.pathname + (query ? '?' + query : '') + window.location.hash;
+          window.history.replaceState({}, '', next);
+          return true;
+        } catch (err) {
+          return /(?:\?|&)sent=1(?:&|$)/.test(window.location.search);
+        }
       }
 
       if (emailInput) {
@@ -95,6 +123,10 @@
         var name = contactForm.name.value.trim();
         var email = contactForm.email.value.trim();
         var message = contactForm.message.value.trim();
+        var organization = contactForm.organization ? contactForm.organization.value.trim() : '';
+        var service = contactForm.service ? contactForm.service.value : '';
+        var budget = contactForm.budget ? contactForm.budget.value : '';
+        var honey = contactForm._honey ? contactForm._honey.value : '';
 
         if (emailInput) {
           setEmailInvalid(!isValidEmail(email));
@@ -112,12 +144,23 @@
           submitBtn.textContent = 'Sending…';
         }
 
-        var data = new FormData(contactForm);
+        var leaving = false;
 
-        fetch('https://formsubmit.co/ajax/projects@f1site.com', {
+        fetch('/api/contact', {
           method: 'POST',
-          body: data,
-          headers: { Accept: 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            organization: organization,
+            service: service,
+            budget: budget,
+            message: message,
+            honey: honey
+          })
         })
           .then(function (response) {
             if (!response.ok) throw new Error('Send failed');
@@ -125,9 +168,13 @@
             showThanks();
           })
           .catch(function () {
-            if (formError) formError.hidden = false;
+            leaving = true;
+            if (nextInput) nextInput.value = window.location.origin + '/contact?sent=1';
+            if (autoInput) autoInput.value = thankYouCopy(name);
+            HTMLFormElement.prototype.submit.call(contactForm);
           })
           .finally(function () {
+            if (leaving) return;
             if (submitBtn) {
               submitBtn.disabled = false;
               submitBtn.textContent = 'Send Message';
@@ -157,6 +204,11 @@
         document.body.classList.add('form-thanks-open');
         window.clearTimeout(thanksTimer);
         thanksTimer = window.setTimeout(hideThanks, 5000);
+      }
+
+      if (consumeSentFlag()) {
+        clearContactForm();
+        showThanks();
       }
     }
 
